@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Limelight&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        <title>Teste WPP (html + css)</title>
+    </head>
+    <body>
+        
+        <div class="app">
+    
+            <div class="barra-lateral-de-icones">
+
+                <div class="primeiros-5-icones">
+
+                    <img src="img/chat.svg" alt="Conversas" class="icon">
+                    <img src="img/status.svg" alt="Status" class="icon">
+                    <img src="img/channels.svg" alt="Canais de contato" class="icon">
+                    <img src="img/communities.svg" alt="Comunidades" class="icon">
+                    <hr>
+                    <img src="img/ia.svg" alt="A.I Chat" class="icon">
+                
+                </div>
+
+                <div class="ultimos-3-icones">
+
+                    <img src="img/media.svg" alt="Mídia" class="icon">
+                    <img src="img/configuration.svg" alt="Configurações" class="icon">
+                    <img src="img/profile.svg" alt="Perfil" class="icon">
+                    
+
+                </div>
+
+            </div>
+
+        
+
+
+            <div class="lista-de-conversas">
+
+                <div class="main-functions">
+
+                    <span>Bem-vindo</span>
+                    <div class="functions">
+                        <img src="img/new_chat.svg" alt="Relatar erro ou sugestão" class="icon">
+                        <button id="theme-toggle" type="button" aria-label="Alternar tema">
+                            <img src="img/theme.svg" alt="Alterar tema" class="icon">
+                        </button>
+                        
+                    </div>
+                </div>
+
+                <div class="pesquisa">
+
+                    <input type="text" placeholder="Pesquisar...">
+                    <img src="img/search.svg" alt="Pesquisar" class="icon">
+
+                </div>
+
+                <div class="filtros">
+
+                    <button><span> Todos</span></button>
+                    <button><span> Projetos</span></button>
+                    <button><span> Fixados</span></button>
+                </div>
+
+                <div class="conversas-fechadas">
+
+                    <button class="arquivada">
+
+                        <img src="img/archive.svg" alt="arquivadas" class="icon">
+                        <span>Projetos arquivados</span>
+                        
+                    </button>
+
+                    <button class="chat-fechado-container" type="button" onclick="abrirChat('matheus')">
+
+                        <img src="img/ft-perfil.jpeg" alt="Foto de perfil" class="chat-fechado">
+                        <span class="nome-conversa">Matheus Fonseca Almeida</span>
+                        <span class="rodape"> Clique para entrar na conversa </span>
+
+                    </button>
+
+                    <button class="chat-fechado-container" type="button" onclick="abrirChat('pdz')">
+
+                        <img src="img/pdzTxt.svg" alt="Foto de perfil" class="chat-fechado">
+                        <span class="nome-conversa">PDZ: Manipulação de arquivos</span>
+                        <span class="rodape"> Clique para entrar na conversa </span>
+
+                    </button>
+
+                    <button class="chat-fechado-container" type="button" onclick="abrirChat('swift-file')">
+                        
+                        <img src="img/swift-file.svg" alt="Foto de perfil" class="chat-fechado">
+                        <span class="nome-conversa">Swift-File: Busca acelerada</span>
+                        <span class="rodape"> Clique para entrar na conversa </span>
+
+                    </button>
+
+                    <button class="chat-fechado-container" type="button" onclick="abrirChat('game-verse')">
+
+                        <img src="img/game-verse.svg" alt="Foto de perfil" class="chat-fechado">
+                        <span class="nome-conversa">Game-Verse: E-commerce</span>
+                        <span class="rodape"> Clique para entrar na conversa </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+            
+            <!-- Dividir em 2, uma sem seleção e outra após seleção de conversa -->
+
+            <div class="conversa-aberta">
+            
+                <!-- Tela 1: vazia, apresentação -->
+
+                <div id="tela-vazia" class="tela-vazia">
+
+                    <img src="img/ia.svg" alt="A.I Assistant" class="icon icon-apresentacao-ia">
+                    <h2>Portfólio Interativo</h2>
+                    <span>Selecione um projeto na barra lateral para conversar com a I.A sobre ele.</span>
+                    <span class="rodape-vazio">Desenvolvido por mfalmeida</span>
+
+                </div>
+                
+                <!-- Tela 2: chat ativo (escondido por padrão) -->
+
+                <div id="tela-chat" class="tela-chat" style="display: none;">
+
+                    <!-- Cabeçalho do chat -->
+
+                    <div class="chat-cabecalho">
+
+                        <div class="chat-info">
+
+                            <img id="chat-avatar" src="img/ia.svg" alt="Avatar" class="chat-avatar">
+                            <div class="chat-textos">
+
+                                <span id="chat-titulo" class="chat-titulo">Nome do Projeto</span>
+                                <span id="chat-status" class="chat-status">Online</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Área onde as mensagens vão aparecer -->
+
+                    <div id="chat-mensagens" class="chat-mensagens">
+
+                        <!-- Mensagens serão adicionadas aqui dinamicamente via JavaScript -->
+
+                    </div>
+
+                    <!-- Barra inferior para digitar -->
+                    <div class="chat-input-area">
+                        <input type="text" id="input-mensagem" placeholder="Digite uma pergunta sobre o projeto..." onkeypress="verificarEnter(event)">
+                        <button id="btn-enviar" onclick="enviarMensagem()">
+                            <img src="img/send.svg" alt="Enviar" class="icon" style="width: 20px;">
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+    
+        </div>
+    
+        <script>
+
+            const themeToggle = document.getElementById("theme-toggle");
+            const savedTheme = localStorage.getItem("theme");
+
+            document.querySelectorAll("img[alt]").forEach((img) => {
+                if (!img.getAttribute("title")) {
+                    img.setAttribute("title", img.getAttribute("alt"));
+                }
+            });
+
+            if (savedTheme === "light") {
+                document.body.classList.add("light");
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    document.body.classList.toggle("light");
+                    localStorage.setItem(
+                    "theme",
+                    document.body.classList.contains("light") ? "light" : "dark"
+                    );
+                });
+            }
+
+            // BANCO DE DADOS DO FRONTEND
+            const projetosData = {
+                matheus: {
+                    titulo: "Matheus Fonseca Almeida",
+                    avatar: "img/ft-perfil.jpeg"
+                },
+                pdz: {
+                    titulo: "PDZ: Manipulação de arquivos",
+                    avatar: "img/pdzTxt.svg"
+                },
+                "swift-file": {
+                    titulo: "Swift-File: Busca acelerada",
+                    avatar: "img/swift-file.svg"
+                },
+                "game-verse": {
+                    titulo: "Game-Verse: E-commerce",
+                    avatar: "img/game-verse.svg"
+                }
+            };
+
+            let chatAtivo = null;
+
+            const avatarCache = new Map();
+
+            function preloadAvatares() {
+                Object.values(projetosData).forEach((projeto) => {
+                    const imagem = new Image();
+                    imagem.decoding = "async";
+                    imagem.src = projeto.avatar;
+                    avatarCache.set(projeto.avatar, imagem);
+                });
+            }
+
+            function aguardarImagem(imagem) {
+                if (imagem.complete) {
+                    return Promise.resolve();
+                }
+
+                return new Promise((resolve) => {
+                    imagem.onload = () => resolve();
+                    imagem.onerror = () => resolve();
+                });
+            }
+
+            async function atualizarAvatarDoChat(srcAvatar, tituloProjeto) {
+                const avatarEl = document.getElementById("chat-avatar");
+                if (!avatarEl) {
+                    return;
+                }
+
+                if (avatarEl.dataset.avatarAtual === srcAvatar) {
+                    return;
+                }
+
+                avatarEl.classList.add("carregando");
+
+                let imagem = avatarCache.get(srcAvatar);
+                if (!imagem) {
+                    imagem = new Image();
+                    imagem.decoding = "async";
+                    imagem.src = srcAvatar;
+                    avatarCache.set(srcAvatar, imagem);
+                }
+
+                await aguardarImagem(imagem);
+
+                if (chatAtivo && projetosData[chatAtivo]?.avatar === srcAvatar) {
+                    avatarEl.src = srcAvatar;
+                    avatarEl.alt = `Avatar de ${tituloProjeto}`;
+                    avatarEl.dataset.avatarAtual = srcAvatar;
+                }
+
+                avatarEl.classList.remove("carregando");
+            }
+
+            preloadAvatares();
+
+            function abrirChat(idProjeto) {
+                chatAtivo = idProjeto;
+                const info = projetosData[idProjeto];
+
+                if (!info) {
+                    return;
+                }
+
+                // 1. Esconde a tela vazia e mostra o chat
+                document.getElementById('tela-vazia').style.display = 'none';
+                document.getElementById('tela-chat').style.display = 'flex';
+
+                // 2. Atualiza foto e título do cabeçalho
+                document.getElementById('chat-titulo').innerText = info.titulo;
+                atualizarAvatarDoChat(info.avatar, info.titulo);
+
+                // 3. Limpa e carrega a mensagem inicial de boas-vindas do projeto
+                const containerMensagens = document.getElementById('chat-mensagens');
+                containerMensagens.innerHTML = ""; 
+                
+                // Simula uma mensagem inicial do bot baseada no projeto escolhido
+                let mensagemInicial = "";
+                if (idProjeto === "matheus") {
+                    mensagemInicial = "Olá! Sou o assistente do Matheus. Gostaria de saber sobre as tecnologias que ele usa ou sobre as experiências profissionais?";
+                } else {
+                    mensagemInicial = `Bem-vindo ao repositório do ${info.titulo}! O que você quer saber sobre o código ou a arquitetura deste projeto?`;
+                }
+
+                adicionarBalaoMensagem(mensagemInicial, "bot");
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Esc" || event.key === "Escape") {
+                    if (chatAtivo) {
+                        chatAtivo = null;
+                        document.getElementById('tela-chat').style.display = 'none';
+                        document.getElementById('tela-vazia').style.display = 'flex';
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if ((event.key === "Enter" || event.key === "NumpadEnter") && chatAtivo) {
+                    enviarMensagem();
+                }
+            });
+
+            // ----------------------------------------------------
+            // MOTOR DO CHAT (RENDERIZAÇÃO DE MENSAGENS)
+            // ----------------------------------------------------
+
+            // Função para desenhar o balão na tela
+            function adicionarBalaoMensagem(texto, remetente) {
+                const chatMensagens = document.getElementById("chat-mensagens");
+                
+                // Cria a linha (alinhamento esquerdo ou direito)
+                const divLinha = document.createElement("div");
+                divLinha.classList.add("linha-mensagem");
+                divLinha.classList.add(remetente); // 'usuario' ou 'bot'
+
+                // Cria o balão
+                const divBalao = document.createElement("div");
+                divBalao.classList.add("balao-mensagem");
+                divBalao.innerText = texto;
+
+                // Junta e coloca na tela
+                divLinha.appendChild(divBalao);
+                chatMensagens.appendChild(divLinha);
+
+                // Força o scroll ir para a última mensagem
+                chatMensagens.scrollTop = chatMensagens.scrollHeight;
+            }
+
+            // Função chamada quando o usuário clica no botão Enviar ou aperta Enter
+            function enviarMensagem() {
+                if (!chatAtivo) return;
+
+                const inputEl = document.getElementById("input-mensagem");
+                const texto = inputEl.value.trim();
+
+                if (texto === "") return; // Não envia mensagem vazia
+
+                // 1. Coloca a mensagem do usuário na tela
+                adicionarBalaoMensagem(texto, "usuario");
+                
+                // 2. Limpa o campo de texto
+                inputEl.value = "";
+
+                // 3. Muda o status para "Digitando..."
+                document.getElementById("chat-status").innerText = "digitando...";
+                document.getElementById("chat-status").style.color = "#00a884"; // Cor verde
+
+                // ==========================================
+                // (FUTURO: AQUI POST para o Flask)
+                // ==========================================
+                // Por enquanto, simular a resposta da IA:
+                
+                setTimeout(() => {
+                    // Resposta fake simulando a IA
+                    const respostaFake = `Olá! Sou o assistente virtual do projeto ${projetosData[chatAtivo].titulo}. Ainda estou sendo programado pelo Matheus, mas em breve poderei te responder!`;
+                    
+                    // Coloca a resposta na tela
+                    adicionarBalaoMensagem(respostaFake, "bot");
+                    
+                    // Volta o status para Online
+                    document.getElementById("chat-status").innerText = "Online";
+                    document.getElementById("chat-status").style.color = ""; // Reseta a cor
+                }, 1500);
+            }
+
+            // Garante que o Enter envie a mensagem
+            function verificarEnter(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Evita quebra de linha no input
+                    enviarMensagem();
+                }
+            }
+
+
+        </script>
+
+    </body>
+
+</html>

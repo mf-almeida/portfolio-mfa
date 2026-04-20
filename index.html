@@ -1,401 +1,309 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="img/icon_icon.svg">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Limelight&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
         <title>Teste WPP (html + css)</title>
+        <script src="https://unpkg.com/i18next@23.16.8/dist/umd/i18next.min.js"></script>
     </head>
     <body>
-        
         <div class="app">
-    
             <div class="barra-lateral-de-icones">
-
                 <div class="primeiros-5-icones">
-
-                    <img src="img/chat.svg" alt="Conversas" class="icon">
-                    <img src="img/status.svg" alt="Status" class="icon">
-                    <img src="img/channels.svg" alt="Canais de contato" class="icon">
-                    <img src="img/communities.svg" alt="Comunidades" class="icon">
+                    <img src="img/chat.svg" alt="Chat" class="icon" id="chat-shortcut" data-i18n-title="icon_chat" data-i18n-alt="icon_chat">
+                    <img src="img/status.svg" alt="Status" class="icon" id="status-shortcut" data-i18n-title="icon_status" data-i18n-alt="icon_status">
+                    <img src="img/channels.svg" alt="Contato" class="icon" id="modal-trigger" data-i18n-title="icon_contact" data-i18n-alt="icon_contact">
+                    <img src="img/communities.svg" alt="Comunidades" class="icon" data-i18n-title="icon_communities" data-i18n-alt="icon_communities">
                     <hr>
-                    <img src="img/ia.svg" alt="A.I Chat" class="icon">
-                
+                    <img src="img/ia.svg" alt="IA" class="icon" data-i18n-title="icon_ai" data-i18n-alt="icon_ai">
                 </div>
 
                 <div class="ultimos-3-icones">
+                    <img src="img/new_chat.svg" alt="Relatar erro ou sugestao" class="icon" id="feedback-shortcut" data-i18n-title="icon_feedback" data-i18n-alt="icon_feedback">
 
-                    <img src="img/media.svg" alt="Mídia" class="icon">
-                    <img src="img/configuration.svg" alt="Configurações" class="icon">
-                    <img src="img/profile.svg" alt="Perfil" class="icon">
-                    
-
+                    <img src="img/profile.svg" alt="Sobre mim" class="icon" data-i18n-title="icon_about" data-i18n-alt="icon_about">
                 </div>
-
             </div>
 
-        
+            <div id="modal" class="modal" aria-hidden="true">
+                <div class="modal-content modal-contact-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                    <div class="modal-header modal-contact-header">
+                        <div>
+                            <p class="modal-kicker" data-i18n="contact_kicker">Contato</p>
+                            <h2 id="modal-title" data-i18n="contact_title">Vamos conversar</h2>
+                        </div>
+                        <button type="button" class="modal-close-icon" aria-label="Fechar modal" data-i18n-title="close_modal">&times;</button>
+                    </div>
 
+                    <div class="modal-body modal-contact-body">
+                        <p class="modal-description" data-i18n="contact_description">
+                            Se quiser falar sobre o portfólio, trocar ideia sobre desenvolvimento ou pedir alguma referência, use um dos canais abaixo.
+                        </p>
+
+                        <div class="contact-grid">
+                            <a class="contact-card" href="mailto:pessoal.matheus.fonseca@gmail.com?subject=Contato%20via%20Portfólio&body=Olá,%0D%0A%0D%0A[Escreva%20sua%20mensagem%20aqui]%0D%0A%0D%0AAtenciosamente," target="_blank" rel="noopener noreferrer">
+                                <span class="contact-label" data-i18n="contact_email_label">Email</span>
+                                <strong>pessoal.matheus.fonseca@gmail.com</strong>
+                                <small data-i18n="contact_email_help">Clique para enviar uma mensagem</small>
+                            </a>
+
+                            <a class="contact-card" href="https://www.linkedin.com/in/matheus-almeida-53415a2a5" target="_blank" rel="noopener noreferrer">
+                                <span class="contact-label" data-i18n="contact_linkedin_label">LinkedIn</span>
+                                <strong data-i18n="contact_linkedin_title">Perfil profissional</strong>
+                                <small data-i18n="contact_linkedin_help">Abra meu perfil no LinkedIn</small>
+                            </a>
+
+                            <a class="contact-card" href="https://github.com/mf-almeida" target="_blank" rel="noopener noreferrer">
+                                <span class="contact-label" data-i18n="contact_github_label">GitHub</span>
+                                <strong data-i18n="contact_github_title">Repositórios e projetos</strong>
+                                <small data-i18n="contact_github_help">Veja meus códigos públicos</small>
+                            </a>
+
+                            <button type="button" id="open-service-modal" class="contact-card contact-service-trigger">
+                                <span class="contact-label" data-i18n="contact_service_label">Solicitar serviço</span>
+                                <strong data-i18n="contact_service_title">Formulário de serviço</strong>
+                                <small data-i18n="contact_service_help">Clique para solicitar um serviço</small>
+                            </button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="modal-footer modal-contact-footer">
+                        <span data-i18n="contact_footer_note">Retorno em até 24h úteis</span>
+                        <button type="button" class="contact-close-cta" data-i18n="close">Fechar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="service-modal" class="modal" aria-hidden="true">
+                <div class="modal-content service-modal-content" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+                    <div class="modal-header modal-contact-header">
+                        <div>
+                            <p class="modal-kicker" data-i18n="service_kicker">Solicitação de serviço</p>
+                            <h2 id="service-modal-title" data-i18n="service_title">Formulário de serviço</h2>
+                        </div>
+                        <button type="button" class="service-close-icon" aria-label="Fechar formulário" data-i18n-title="close_form">&times;</button>
+                    </div>
+
+                    <div class="modal-body service-modal-body">
+                        <div class="service-form-frame-wrap">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSenu9xlXvNRYMqMsrUGLKqwmFAOtQi4I-IES20bxnV_C96_IQ/viewform?embedded=true" width="640" height="1500" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Carregando...</iframe>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer modal-contact-footer">
+                        <span data-i18n="service_footer_note">Preencha os dados para enviar sua solicitação.</span>
+                        <button type="button" class="service-close-cta" data-i18n="close">Fechar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="portfolio-form-modal" class="modal" aria-hidden="true">
+                <div class="modal-content portfolio-form-modal-content" role="dialog" aria-modal="true" aria-labelledby="portfolio-form-modal-title">
+                    <div class="modal-header modal-contact-header">
+                        <div>
+                            <p class="modal-kicker" data-i18n="feedback_kicker">Relatar erro ou sugestão</p>
+                            <h2 id="portfolio-form-modal-title" data-i18n="feedback_title">Formulário de feedback</h2>
+                        </div>
+                        <button type="button" class="portfolio-form-close-icon" aria-label="Fechar formulário" data-i18n-title="close_form">&times;</button>
+                    </div>
+
+                    <div class="modal-body portfolio-form-modal-body">
+                        <div class="service-form-frame-wrap">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfeXzVEqi420GrJnV0wwqmtRSrxNovkI9u4P-E_F3yz2pF9ag/viewform?embedded=true" width="640" height="1200" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Carregando...</iframe>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer modal-contact-footer">
+                        <span data-i18n="feedback_footer_note">Use este canal para reportar melhorias e possíveis falhas.</span>
+                        <button type="button" class="portfolio-form-close-cta" data-i18n="close">Fechar</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="lista-de-conversas">
-
                 <div class="main-functions">
-
-                    <span>Bem-vindo</span>
+                    <span data-i18n="welcome_title">Bem-vindo</span>
                     <div class="functions">
-                        <img src="img/new_chat.svg" alt="Relatar erro ou sugestão" class="icon">
-                        <button id="theme-toggle" type="button" aria-label="Alternar tema">
-                            <img src="img/theme.svg" alt="Alterar tema" class="icon">
-                        </button>
+
+                        <img src="img/translate.svg" alt="Mudar idioma" class="icon" id="language-shortcut" data-i18n-title="icon_language" data-i18n-alt="icon_language">
                         
+                        <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
+                            <p class="language-menu-title" data-i18n="language_menu_title">Idioma</p>
+                            <button type="button" class="language-option" data-language="pt" role="menuitemradio" aria-checked="true" data-i18n="language_option_pt">Portugues (BR)</button>
+                            <button type="button" class="language-option" data-language="en" role="menuitemradio" aria-checked="false" data-i18n="language_option_en">English</button>
+                            <button type="button" class="language-option" data-language="es" role="menuitemradio" aria-checked="false" data-i18n="language_option_es">Espanol</button>
+                        </div>
+
+                        <button id="theme-toggle" type="button" aria-label="Alternar tema">
+                            <img src="img/theme.svg" alt="Alterar tema" class="icon" data-i18n-title="icon_theme" data-i18n-alt="icon_theme">
+                        </button>
                     </div>
                 </div>
 
                 <div class="pesquisa">
-
-                    <input type="text" placeholder="Pesquisar...">
-                    <img src="img/search.svg" alt="Pesquisar" class="icon">
-
+                    <input type="text" id="search-bar" placeholder="Pesquisar..." autocomplete="off" data-i18n-placeholder="search_placeholder">
+                    <img src="img/search.svg" alt="Pesquisar" class="icon" data-i18n-title="icon_search" data-i18n-alt="icon_search">
                 </div>
 
                 <div class="filtros">
-
-                    <button><span> Todos</span></button>
-                    <button><span> Projetos</span></button>
-                    <button><span> Fixados</span></button>
+                    <button type="button" data-filter="all" class="ativo" aria-pressed="true"><span data-i18n="filter_all">Todos</span></button>
+                    <button type="button" data-filter="projects" aria-pressed="false"><span data-i18n="filter_projects">Projetos</span></button>
+                    <button type="button" data-filter="pinned" aria-pressed="false"><span data-i18n="filter_pinned">Fixados</span></button>
                 </div>
 
                 <div class="conversas-fechadas">
-
                     <button class="arquivada">
-
-                        <img src="img/archive.svg" alt="arquivadas" class="icon">
-                        <span>Projetos arquivados</span>
-                        
+                        <img src="img/archive.svg" alt="Arquivadas" class="icon" data-i18n-title="icon_archived" data-i18n-alt="icon_archived">
+                        <span data-i18n="archived_projects">Projetos arquivados</span>
                     </button>
 
-                    <button class="chat-fechado-container" type="button" onclick="abrirChat('matheus')">
-
-                        <img src="img/ft-perfil.jpeg" alt="Foto de perfil" class="chat-fechado">
-                        <span class="nome-conversa">Matheus Fonseca Almeida</span>
-                        <span class="rodape"> Clique para entrar na conversa </span>
-
+                    <button class="chat-fechado-container" type="button" data-chat-type="conversation" onclick="abrirChat('matheus')">
+                        <img src="img/ft-perfil.jpeg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <img src="img/pin-fix.svg" alt="Conversa fixada" class="pin-fix-icon" data-i18n-alt="pinned_conversation">
+                        <span class="nome-conversa" data-i18n="project_matheus_title">Matheus Fonseca Almeida</span>
+                        <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
 
-                    <button class="chat-fechado-container" type="button" onclick="abrirChat('pdz')">
-
-                        <img src="img/pdzTxt.svg" alt="Foto de perfil" class="chat-fechado">
-                        <span class="nome-conversa">PDZ: Manipulação de arquivos</span>
-                        <span class="rodape"> Clique para entrar na conversa </span>
-
+                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('pdz')">
+                        <img src="img/pdzTxt.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <span class="nome-conversa" data-i18n="project_pdz_title">PDZ: Manipulacao de arquivos</span>
+                        <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
 
-                    <button class="chat-fechado-container" type="button" onclick="abrirChat('swift-file')">
-                        
-                        <img src="img/swift-file.svg" alt="Foto de perfil" class="chat-fechado">
-                        <span class="nome-conversa">Swift-File: Busca acelerada</span>
-                        <span class="rodape"> Clique para entrar na conversa </span>
-
+                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('swift-file')">
+                        <img src="img/swift-file.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <span class="nome-conversa" data-i18n="project_swift_title">Swift-File: Busca acelerada</span>
+                        <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
 
-                    <button class="chat-fechado-container" type="button" onclick="abrirChat('game-verse')">
-
-                        <img src="img/game-verse.svg" alt="Foto de perfil" class="chat-fechado">
-                        <span class="nome-conversa">Game-Verse: E-commerce</span>
-                        <span class="rodape"> Clique para entrar na conversa </span>
-
+                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('game-verse')">
+                        <img src="img/game-verse.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <span class="nome-conversa" data-i18n="project_game_title">Game-Verse: E-commerce</span>
+                        <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
-
                 </div>
-
             </div>
-            
-            <!-- Dividir em 2, uma sem seleção e outra após seleção de conversa -->
 
             <div class="conversa-aberta">
-            
-                <!-- Tela 1: vazia, apresentação -->
-
                 <div id="tela-vazia" class="tela-vazia">
-
-                    <img src="img/ia.svg" alt="A.I Assistant" class="icon icon-apresentacao-ia">
-                    <h2>Portfólio Interativo</h2>
-                    <span>Selecione um projeto na barra lateral para conversar com a I.A sobre ele.</span>
-                    <span class="rodape-vazio">Desenvolvido por mfalmeida</span>
-
+                    <img src="img/ia.svg" alt="Assistente IA" class="icon icon-apresentacao-ia" data-i18n-alt="empty_ai_assistant">
+                    <h2 data-i18n="empty_title">Portfolio Interativo</h2>
+                    <span data-i18n="empty_subtitle">Selecione um projeto na barra lateral para conversar com a IA sobre ele.</span>
+                    <span class="rodape-vazio" data-i18n="empty_footer">Desenvolvido por mfalmeida</span>
                 </div>
-                
-                <!-- Tela 2: chat ativo (escondido por padrão) -->
 
                 <div id="tela-chat" class="tela-chat" style="display: none;">
-
-                    <!-- Cabeçalho do chat -->
-
                     <div class="chat-cabecalho">
-
                         <div class="chat-info">
-
-                            <img id="chat-avatar" src="img/ia.svg" alt="Avatar" class="chat-avatar">
+                            <img id="chat-avatar" src="img/ia.svg" alt="Avatar" class="chat-avatar" data-i18n-alt="chat_avatar">
                             <div class="chat-textos">
-
-                                <span id="chat-titulo" class="chat-titulo">Nome do Projeto</span>
-                                <span id="chat-status" class="chat-status">Online</span>
-
+                                <span id="chat-titulo" class="chat-titulo" data-i18n="chat_project_placeholder">Nome do Projeto</span>
+                                <span id="chat-status" class="chat-status" data-i18n="status_online">Online</span>
                             </div>
-
                         </div>
 
-                    </div>
-
-                    <!-- Área onde as mensagens vão aparecer -->
-
-                    <div id="chat-mensagens" class="chat-mensagens">
-
-                        <!-- Mensagens serão adicionadas aqui dinamicamente via JavaScript -->
-
-                    </div>
-
-                    <!-- Barra inferior para digitar -->
-                    <div class="chat-input-area">
-                        <input type="text" id="input-mensagem" placeholder="Digite uma pergunta sobre o projeto..." onkeypress="verificarEnter(event)">
-                        <button id="btn-enviar" onclick="enviarMensagem()">
-                            <img src="img/send.svg" alt="Enviar" class="icon" style="width: 20px;">
+                        <button id="btn-limpar-historico" type="button" class="btn-limpar-historico" title="Limpar historico deste contato" aria-label="Limpar historico deste contato" data-i18n-title="clear_history" data-i18n="clear_history" disabled>
+                            Limpar historico
                         </button>
                     </div>
 
+                    <div id="chat-mensagens" class="chat-mensagens"></div>
+
+                    <div class="chat-input-area">
+                        <input type="text" id="input-mensagem" placeholder="Digite uma pergunta sobre o projeto..." onkeypress="verificarEnter(event)" data-i18n-placeholder="chat_input_placeholder">
+                        <button id="btn-enviar" onclick="enviarMensagem()">
+                            <img src="img/send.svg" alt="Enviar" class="icon" style="width: 20px;" data-i18n-title="send_message" data-i18n-alt="send_message">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="status-view" class="status-view" style="display: none;" aria-hidden="true">
+                <div class="status-board-header">
+                    <h2 data-i18n="kanban_title">Status dos Projetos</h2>
+                    <p data-i18n="kanban_subtitle">Acompanhe o progresso em formato Kanban.</p>
                 </div>
 
+                <div class="kanban-board">
+                    <section class="kanban-column">
+                        <header class="kanban-column-header">
+                            <h3 data-i18n="kanban_col_done">Finalizados</h3>
+                            <span id="count-finalizados">0</span>
+                        </header>
+                        <div id="kanban-finalizados" class="kanban-cards"></div>
+                    </section>
+
+                    <section class="kanban-column">
+                        <header class="kanban-column-header">
+                            <h3 data-i18n="kanban_col_progress">Em andamento</h3>
+                            <span id="count-andamento">0</span>
+                        </header>
+                        <div id="kanban-andamento" class="kanban-cards"></div>
+                    </section>
+
+                    <section class="kanban-column">
+                        <header class="kanban-column-header">
+                            <h3 data-i18n="kanban_col_archived">Arquivados</h3>
+                            <span id="count-arquivados">0</span>
+                        </header>
+                        <div id="kanban-arquivados" class="kanban-cards"></div>
+                    </section>
+
+                    <section class="kanban-column">
+                        <header class="kanban-column-header">
+                            <h3 data-i18n="kanban_col_ideas">Ideias de Projetos</h3>
+                            <span id="count-ideias">0</span>
+                        </header>
+                        <div id="kanban-ideias" class="kanban-cards"></div>
+                    </section>
+                </div>
+
+                <div id="status-cards-source" class="status-cards-source" aria-hidden="true">
+                    <article id="finalizados__portfolio_v1" class="kanban-card status-card">
+                        <strong data-i18n="kanban_card_portfolio_title">Portfolio V1</strong>
+                        <p data-i18n="kanban_card_portfolio_desc">Interface principal entregue e responsiva.</p>
+                    </article>
+
+                    <article id="finalizados__pdz" class="kanban-card status-card">
+                        <strong data-i18n="project_pdz_title">PDZ: Manipulacao de arquivos</strong>
+                        <p data-i18n="kanban_done_project_desc">Projeto concluido e pronto para demonstração.</p>
+                    </article>
+
+                    <article id="finalizados__swift_file" class="kanban-card status-card">
+                        <strong data-i18n="project_swift_title">Swift-File: Busca acelerada</strong>
+                        <p data-i18n="kanban_done_project_desc">Projeto concluido e pronto para demonstração.</p>
+                    </article>
+
+                    <article id="finalizados__game_verse" class="kanban-card status-card">
+                        <strong data-i18n="project_game_title">Game-Verse: E-commerce</strong>
+                        <p data-i18n="kanban_done_project_desc">Projeto concluido e pronto para demonstração.</p>
+                    </article>
+
+                    <article id="andamento__refino_visual" class="kanban-card status-card">
+                        <strong data-i18n="kanban_card_visual_title">Refino visual</strong>
+                        <p data-i18n="kanban_card_visual_desc">Ajustes de design e consistencia entre temas.</p>
+                    </article>
+
+                    <article id="arquivados__prototipo_antigo" class="kanban-card status-card">
+                        <strong data-i18n="kanban_card_proto_title">Prototipo antigo</strong>
+                        <p data-i18n="kanban_card_proto_desc">Versao anterior preservada apenas para referencia.</p>
+                    </article>
+
+                    <article id="ideias__dashboard_analytics" class="kanban-card status-card">
+                        <strong data-i18n="kanban_card_analytics_title">Dashboard de analytics</strong>
+                        <p data-i18n="kanban_card_analytics_desc">Métricas de uso e engajamento por projeto.</p>
+                    </article>
+                </div>
             </div>
-    
         </div>
-    
-        <script>
 
-            const themeToggle = document.getElementById("theme-toggle");
-            const savedTheme = localStorage.getItem("theme");
-
-            document.querySelectorAll("img[alt]").forEach((img) => {
-                if (!img.getAttribute("title")) {
-                    img.setAttribute("title", img.getAttribute("alt"));
-                }
-            });
-
-            if (savedTheme === "light") {
-                document.body.classList.add("light");
-            }
-
-            if (themeToggle) {
-                themeToggle.addEventListener("click", () => {
-                    document.body.classList.toggle("light");
-                    localStorage.setItem(
-                    "theme",
-                    document.body.classList.contains("light") ? "light" : "dark"
-                    );
-                });
-            }
-
-            // BANCO DE DADOS DO FRONTEND
-            const projetosData = {
-                matheus: {
-                    titulo: "Matheus Fonseca Almeida",
-                    avatar: "img/ft-perfil.jpeg"
-                },
-                pdz: {
-                    titulo: "PDZ: Manipulação de arquivos",
-                    avatar: "img/pdzTxt.svg"
-                },
-                "swift-file": {
-                    titulo: "Swift-File: Busca acelerada",
-                    avatar: "img/swift-file.svg"
-                },
-                "game-verse": {
-                    titulo: "Game-Verse: E-commerce",
-                    avatar: "img/game-verse.svg"
-                }
-            };
-
-            let chatAtivo = null;
-
-            const avatarCache = new Map();
-
-            function preloadAvatares() {
-                Object.values(projetosData).forEach((projeto) => {
-                    const imagem = new Image();
-                    imagem.decoding = "async";
-                    imagem.src = projeto.avatar;
-                    avatarCache.set(projeto.avatar, imagem);
-                });
-            }
-
-            function aguardarImagem(imagem) {
-                if (imagem.complete) {
-                    return Promise.resolve();
-                }
-
-                return new Promise((resolve) => {
-                    imagem.onload = () => resolve();
-                    imagem.onerror = () => resolve();
-                });
-            }
-
-            async function atualizarAvatarDoChat(srcAvatar, tituloProjeto) {
-                const avatarEl = document.getElementById("chat-avatar");
-                if (!avatarEl) {
-                    return;
-                }
-
-                if (avatarEl.dataset.avatarAtual === srcAvatar) {
-                    return;
-                }
-
-                avatarEl.classList.add("carregando");
-
-                let imagem = avatarCache.get(srcAvatar);
-                if (!imagem) {
-                    imagem = new Image();
-                    imagem.decoding = "async";
-                    imagem.src = srcAvatar;
-                    avatarCache.set(srcAvatar, imagem);
-                }
-
-                await aguardarImagem(imagem);
-
-                if (chatAtivo && projetosData[chatAtivo]?.avatar === srcAvatar) {
-                    avatarEl.src = srcAvatar;
-                    avatarEl.alt = `Avatar de ${tituloProjeto}`;
-                    avatarEl.dataset.avatarAtual = srcAvatar;
-                }
-
-                avatarEl.classList.remove("carregando");
-            }
-
-            preloadAvatares();
-
-            function abrirChat(idProjeto) {
-                chatAtivo = idProjeto;
-                const info = projetosData[idProjeto];
-
-                if (!info) {
-                    return;
-                }
-
-                // 1. Esconde a tela vazia e mostra o chat
-                document.getElementById('tela-vazia').style.display = 'none';
-                document.getElementById('tela-chat').style.display = 'flex';
-
-                // 2. Atualiza foto e título do cabeçalho
-                document.getElementById('chat-titulo').innerText = info.titulo;
-                atualizarAvatarDoChat(info.avatar, info.titulo);
-
-                // 3. Limpa e carrega a mensagem inicial de boas-vindas do projeto
-                const containerMensagens = document.getElementById('chat-mensagens');
-                containerMensagens.innerHTML = ""; 
-                
-                // Simula uma mensagem inicial do bot baseada no projeto escolhido
-                let mensagemInicial = "";
-                if (idProjeto === "matheus") {
-                    mensagemInicial = "Olá! Sou o assistente do Matheus. Gostaria de saber sobre as tecnologias que ele usa ou sobre as experiências profissionais?";
-                } else {
-                    mensagemInicial = `Bem-vindo ao repositório do ${info.titulo}! O que você quer saber sobre o código ou a arquitetura deste projeto?`;
-                }
-
-                adicionarBalaoMensagem(mensagemInicial, "bot");
-            }
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === "Esc" || event.key === "Escape") {
-                    if (chatAtivo) {
-                        chatAtivo = null;
-                        document.getElementById('tela-chat').style.display = 'none';
-                        document.getElementById('tela-vazia').style.display = 'flex';
-                    }
-                }
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if ((event.key === "Enter" || event.key === "NumpadEnter") && chatAtivo) {
-                    enviarMensagem();
-                }
-            });
-
-            // ----------------------------------------------------
-            // MOTOR DO CHAT (RENDERIZAÇÃO DE MENSAGENS)
-            // ----------------------------------------------------
-
-            // Função para desenhar o balão na tela
-            function adicionarBalaoMensagem(texto, remetente) {
-                const chatMensagens = document.getElementById("chat-mensagens");
-                
-                // Cria a linha (alinhamento esquerdo ou direito)
-                const divLinha = document.createElement("div");
-                divLinha.classList.add("linha-mensagem");
-                divLinha.classList.add(remetente); // 'usuario' ou 'bot'
-
-                // Cria o balão
-                const divBalao = document.createElement("div");
-                divBalao.classList.add("balao-mensagem");
-                divBalao.innerText = texto;
-
-                // Junta e coloca na tela
-                divLinha.appendChild(divBalao);
-                chatMensagens.appendChild(divLinha);
-
-                // Força o scroll ir para a última mensagem
-                chatMensagens.scrollTop = chatMensagens.scrollHeight;
-            }
-
-            // Função chamada quando o usuário clica no botão Enviar ou aperta Enter
-            function enviarMensagem() {
-                if (!chatAtivo) return;
-
-                const inputEl = document.getElementById("input-mensagem");
-                const texto = inputEl.value.trim();
-
-                if (texto === "") return; // Não envia mensagem vazia
-
-                // 1. Coloca a mensagem do usuário na tela
-                adicionarBalaoMensagem(texto, "usuario");
-                
-                // 2. Limpa o campo de texto
-                inputEl.value = "";
-
-                // 3. Muda o status para "Digitando..."
-                document.getElementById("chat-status").innerText = "digitando...";
-                document.getElementById("chat-status").style.color = "#00a884"; // Cor verde
-
-                // ==========================================
-                // (FUTURO: AQUI POST para o Flask)
-                // ==========================================
-                // Por enquanto, simular a resposta da IA:
-                
-                setTimeout(() => {
-                    // Resposta fake simulando a IA
-                    const respostaFake = `Olá! Sou o assistente virtual do projeto ${projetosData[chatAtivo].titulo}. Ainda estou sendo programado pelo Matheus, mas em breve poderei te responder!`;
-                    
-                    // Coloca a resposta na tela
-                    adicionarBalaoMensagem(respostaFake, "bot");
-                    
-                    // Volta o status para Online
-                    document.getElementById("chat-status").innerText = "Online";
-                    document.getElementById("chat-status").style.color = ""; // Reseta a cor
-                }, 1500);
-            }
-
-            // Garante que o Enter envie a mensagem
-            function verificarEnter(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault(); // Evita quebra de linha no input
-                    enviarMensagem();
-                }
-            }
-
-
-        </script>
-
+        <script src="script.js"></script>
     </body>
-
 </html>

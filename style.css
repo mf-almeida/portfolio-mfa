@@ -79,8 +79,8 @@ body.light {
 
 img {
   -webkit-user-drag: none; /* Chrome, Safari, Edge */
-  user-select: none;       /* Impede seleção de texto/imagem */
   -webkit-user-select: none;
+  user-select: none;       /* Impede seleção de texto/imagem */
   pointer-events: none;    /* Impede interações de clique/arraste */
 }
 
@@ -785,6 +785,7 @@ body.light .linha-mensagem.usuario .balao-mensagem {
     inset: 0;
     z-index: 60;
     background: rgba(7, 9, 13, 0.58);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     padding: 24px;
     overflow: auto;
@@ -871,6 +872,7 @@ body.light .modal {
 .contact-card:hover {
     transform: translateY(-2px);
     border-color: var(--border-hover);
+    background: var(--bg-search);
     background: color-mix(in srgb, var(--bg-search) 72%, var(--hover-surface));
 }
 
@@ -932,6 +934,7 @@ body.light .modal {
 
 .modal-contact-footer {
     border-top: 1px solid var(--border-soft);
+    background: var(--bg-main);
     background: color-mix(in srgb, var(--bg-main) 92%, var(--bg-search));
     color: var(--text-main);
 }
@@ -1069,6 +1072,7 @@ body.light .modal {
     border: 1px solid var(--border-soft);
     border-radius: 14px;
     overflow: hidden;
+    background: var(--bg-search);
     background: color-mix(in srgb, var(--bg-search) 88%, var(--bg-main));
     display: flex;
     flex-direction: column;
@@ -1112,8 +1116,10 @@ body.light .modal {
 }
 
 .kanban-column-header span {
+    color: var(--kanban-accent);
     color: color-mix(in srgb, var(--kanban-accent) 70%, var(--text-main));
     background: color-mix(in srgb, var(--kanban-accent) 16%, transparent);
+    border: 1px solid var(--kanban-accent);
     border: 1px solid color-mix(in srgb, var(--kanban-accent) 28%, transparent);
     border-radius: 999px;
     min-width: 22px;
@@ -1154,7 +1160,9 @@ body.light .modal {
     padding: 12px 12px 11px;
     border-radius: 12px;
     border: 1px solid var(--border-soft);
+    border-left: 3px solid var(--kanban-accent);
     border-left: 3px solid color-mix(in srgb, var(--kanban-accent) 70%, transparent);
+    background: var(--bg-main);
     background: color-mix(in srgb, var(--bg-main) 90%, var(--bg-search));
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
     cursor: default;
@@ -1164,6 +1172,7 @@ body.light .modal {
 .kanban-card:hover {
     transform: translateY(-2px);
     border-color: var(--border-hover);
+    background: var(--bg-search);
     background: color-mix(in srgb, var(--bg-search) 72%, var(--hover-surface));
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }

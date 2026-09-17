@@ -1419,14 +1419,15 @@ body.light .modal {
         display: flex;
     }
 
-    .lista-de-conversas .main-functions {
+    .lista-de-conversas .main-functions,
+    .status-board-header {
         padding-left: 64px;
     }
 
     .barra-lateral-de-icones {
         position: fixed;
         inset: 0 auto 0 0;
-        width: min(62vw, 240px);
+        width: min(26vw, 96px);
         max-width: none;
         padding-top: 68px;
         box-sizing: border-box;
@@ -1434,6 +1435,15 @@ body.light .modal {
         transition: transform 0.28s ease;
         z-index: 85;
         box-shadow: 0 0 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .barra-lateral-de-icones .icon {
+        width: 20px;
+    }
+
+    .barra-lateral-de-icones .primeiros-5-icones,
+    .barra-lateral-de-icones .ultimos-3-icones {
+        gap: 20px;
     }
 
     .app.menu-aberto .barra-lateral-de-icones {

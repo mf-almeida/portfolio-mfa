@@ -900,6 +900,7 @@ body.light .modal {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px 22px 22px;
 }
 
 .about-perfil {
@@ -1067,7 +1068,9 @@ body.light .modal {
 .service-close-icon,
 .service-close-cta,
 .portfolio-form-close-icon,
-.portfolio-form-close-cta {
+.portfolio-form-close-cta,
+.about-close-icon,
+.about-close-cta {
     border: 1px solid var(--border-soft);
     background: transparent;
     color: var(--text-main);
@@ -1076,7 +1079,8 @@ body.light .modal {
 
 .modal-close-icon,
 .service-close-icon,
-.portfolio-form-close-icon {
+.portfolio-form-close-icon,
+.about-close-icon {
     width: 42px;
     height: 42px;
     border-radius: 50%;
@@ -1106,12 +1110,20 @@ body.light .modal {
     font-family: "Victor Mono", monospace;
 }
 
+.about-close-cta {
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-family: "Victor Mono", monospace;
+}
+
 .modal-close-icon:hover,
 .contact-close-cta:hover,
 .service-close-icon:hover,
 .service-close-cta:hover,
 .portfolio-form-close-icon:hover,
 .portfolio-form-close-cta:hover,
+.about-close-icon:hover,
+.about-close-cta:hover,
 .contact-service-trigger:hover {
     background: var(--hover-surface);
 }

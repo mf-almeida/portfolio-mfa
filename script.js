@@ -27,7 +27,7 @@ const projetosData = {
     "reunioes-aut": {
         tituloKey: "project_reunioes_title",
         defaultTitle: "Reuniões_aut",
-        avatar: "img/no_photo.svg"
+        avatar: "img/icon_reunioes_aut.jpg"
     },
     "portfolio-interativo": {
         tituloKey: "project_portfolio_title",

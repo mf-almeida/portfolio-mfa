@@ -125,23 +125,25 @@ def fluxo_mobile_chat_tela_cheia(page):
         assert display_de(page, ".conversa-aberta") == "none"
         assert display_de(page, "#mobile-menu-toggle") == "flex", "hamburguer deveria reaparecer fora do chat"
 
-    def _menu_chat_resume_conversa_em_andamento():
-        open_chat(page, "pdz")
-        page.wait_for_timeout(300)
+    def _sem_chat_aberto_menu_chat_mostra_lista():
+        # Dentro do chat o hamburguer fica escondido de proposito (o botao
+        # de voltar ja cobre a navegacao) - so da pra alcancar o Status a
+        # partir da lista, nunca de dentro de um chat aberto. Depois de
+        # voltar, o menu "Chat" deve levar pra lista (chatAtivo foi limpo
+        # pelo botao de voltar).
         abrir_menu(page)
         page.click("#status-shortcut")
         page.wait_for_timeout(400)
         abrir_menu(page)
         page.click("#chat-shortcut")
         page.wait_for_timeout(400)
-        assert display_de(page, ".conversa-aberta") == "flex", "deveria resumir o chat que estava aberto antes do Status"
-        page.click("#chat-voltar")
-        page.wait_for_timeout(300)
+        assert display_de(page, ".lista-de-conversas") == "flex"
+        assert display_de(page, ".conversa-aberta") == "none"
 
     check(flow, "abrir chat esconde a lista e ocupa a tela", _abrir_chat_esconde_lista_e_mostra_chat)
     check(flow, "botao voltar visivel / hamburguer some dentro do chat", _botao_voltar_visivel_e_hamburguer_some)
     check(flow, "botao voltar retorna pra lista e hamburguer reaparece", _voltar_retorna_pra_lista)
-    check(flow, "menu 'Chat' resume a conversa em andamento apos ver o Status", _menu_chat_resume_conversa_em_andamento)
+    check(flow, "sem chat aberto, menu 'Chat' leva pra lista", _sem_chat_aberto_menu_chat_mostra_lista)
 
 
 def fluxo_mobile_modal_acima_de_tudo(page):

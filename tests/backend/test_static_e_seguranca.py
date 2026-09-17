@@ -10,6 +10,17 @@ def test_home_retorna_index_html(client):
     assert "text/html" in resposta.content_type
 
 
+def test_home_carrega_o_entrypoint_js_como_modulo(client):
+    """Regressão: um restore de backup mal feito durante testes manuais já
+    fez essa tag reverter para o script.js monolítico antigo (removido do
+    repo), deixando o site sem nenhum JavaScript funcionando em produção
+    mesmo com todos os outros testes automatizados passando.
+    """
+    html = client.get("/").get_data(as_text=True)
+    assert '<script type="module" src="js/main.js"></script>' in html
+    assert "script.js" not in html.replace("js/main.js", "")
+
+
 def test_style_css_e_servido(client):
     resposta = client.get("/style.css")
     assert resposta.status_code == 200

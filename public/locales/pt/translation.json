@@ -34,6 +34,8 @@
   "status_typing": "digitando...",
   "status_offline": "Offline",
   "clear_history": "Limpar histórico",
+  "mobile_menu_toggle": "Abrir menu",
+  "chat_back": "Voltar",
   "chat_input_placeholder": "Digite uma pergunta sobre o projeto...",
   "send_message": "Enviar",
   "contact_modal_header": "Contato",

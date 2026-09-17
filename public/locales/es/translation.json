@@ -34,6 +34,8 @@
   "status_typing": "escribiendo...",
   "status_offline": "Desconectado",
   "clear_history": "Borrar historial",
+  "mobile_menu_toggle": "Abrir menú",
+  "chat_back": "Volver",
   "chat_input_placeholder": "Escribe una pregunta sobre el proyecto...",
   "send_message": "Enviar",
   "contact_modal_header": "Contacto",

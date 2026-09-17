@@ -1,5 +1,5 @@
 import { t, formatText, onLanguageChange, isReady, SUPPORTED_LANGUAGES } from "./i18n.js";
-import { showChatView } from "./viewSwitcher.js";
+import { showChatView, setChatAberto } from "./viewSwitcher.js";
 import {
     carregarMensagensDoContato,
     salvarMensagemNoContato,
@@ -245,6 +245,7 @@ function aoSelecionarPerguntaPronta(idProjeto, item) {
 
 export function abrirChat(idProjeto) {
     showChatView();
+    setChatAberto(true);
 
     chatAtivo = idProjeto;
     const info = projetosData[idProjeto];
@@ -383,29 +384,42 @@ function reaplicarTraducoesNoChat() {
     setChatStatus(chatStatusState);
 }
 
+function fecharChatAtivo() {
+    if (!chatAtivo) {
+        return;
+    }
+
+    chatAtivo = null;
+    setChatAberto(false);
+
+    const telaChat = document.getElementById("tela-chat");
+    const telaVazia = document.getElementById("tela-vazia");
+
+    if (telaChat) {
+        telaChat.style.display = "none";
+    }
+
+    if (telaVazia) {
+        telaVazia.style.display = "flex";
+    }
+
+    atualizarEstadoBotaoLimpar();
+}
+
 export function initChat() {
     const btnLimparHistorico = document.getElementById("btn-limpar-historico");
     if (btnLimparHistorico) {
         btnLimparHistorico.addEventListener("click", limparHistoricoAtivoComConfirmacao);
     }
 
+    const btnVoltar = document.getElementById("chat-voltar");
+    if (btnVoltar) {
+        btnVoltar.addEventListener("click", fecharChatAtivo);
+    }
+
     document.addEventListener("keydown", (event) => {
         if (event.key === "Esc" || event.key === "Escape") {
-            if (chatAtivo) {
-                chatAtivo = null;
-                const telaChat = document.getElementById("tela-chat");
-                const telaVazia = document.getElementById("tela-vazia");
-
-                if (telaChat) {
-                    telaChat.style.display = "none";
-                }
-
-                if (telaVazia) {
-                    telaVazia.style.display = "flex";
-                }
-
-                atualizarEstadoBotaoLimpar();
-            }
+            fecharChatAtivo();
         }
     });
 

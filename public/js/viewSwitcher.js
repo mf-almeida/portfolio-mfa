@@ -126,6 +126,18 @@ export function showStatusView() {
     }, VIEW_TRANSITION_MS);
 }
 
+// Usado só pela navegação mobile de tela única: marca em `.app` se existe
+// um chat aberto no momento, pra CSS decidir (via @media) se esconde a
+// lista de conversas. Não tem efeito nenhum em telas maiores.
+export function setChatAberto(estaAberto) {
+    const appRoot = document.querySelector(".app");
+    if (!appRoot) {
+        return;
+    }
+
+    appRoot.classList.toggle("chat-aberto", Boolean(estaAberto));
+}
+
 export function initViewSwitcher() {
     const chatShortcut = document.getElementById("chat-shortcut");
     const statusShortcut = document.getElementById("status-shortcut");

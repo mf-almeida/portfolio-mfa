@@ -14,6 +14,13 @@
     </head>
     <body>
         <div class="app">
+            <button type="button" id="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false" data-i18n-title="mobile_menu_toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" hidden></div>
+
             <div class="barra-lateral-de-icones">
                 <div class="primeiros-5-icones">
                     <img src="img/chat.svg" alt="Chat" class="icon" id="chat-shortcut" data-i18n-title="icon_chat" data-i18n-alt="icon_chat">
@@ -259,6 +266,8 @@
 
                 <div id="tela-chat" class="tela-chat" style="display: none;">
                     <div class="chat-cabecalho">
+                        <button type="button" id="chat-voltar" class="chat-voltar" aria-label="Voltar" data-i18n-title="chat_back">&larr;</button>
+
                         <div class="chat-info">
                             <img id="chat-avatar" src="img/ia.svg" alt="Avatar" class="chat-avatar" data-i18n-alt="chat_avatar">
                             <div class="chat-textos">

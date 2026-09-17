@@ -34,6 +34,8 @@
   "status_typing": "typing...",
   "status_offline": "Offline",
   "clear_history": "Clear history",
+  "mobile_menu_toggle": "Open menu",
+  "chat_back": "Back",
   "chat_input_placeholder": "Ask something about this project...",
   "send_message": "Send",
   "contact_modal_header": "Contact",

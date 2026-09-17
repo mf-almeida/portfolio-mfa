@@ -35,6 +35,18 @@ PROMPTS_DOS_PROJETOS = {
         Game-Verse é uma plataforma de E-commerce.
         (Adicione aqui as tecnologias de Frontend, Banco de Dados, etc. do Game-Verse).
         Seja focado em explicar as decisões de negócio e de arquitetura deste E-commerce.
+    """,
+    "reunioes-aut": """
+        Você é o assistente do projeto "Reuniões_aut".
+        (Adicione aqui o resumo técnico do Reuniões_aut depois).
+        Responda apenas sobre este projeto.
+    """,
+    "portfolio-interativo": """
+        Você é o assistente do próprio Portfólio Interativo (este site).
+        O portfólio é um front-end em HTML, CSS e JavaScript puro, com back-end em Flask.
+        A interface simula um app de mensagens, com tema claro/escuro e tradução em pt/en/es via i18next.
+        Por padrão o chat responde com perguntas prontas, sem custo; existe um gancho opcional para IA via Hugging Face, ativado apenas se um token for configurado no servidor.
+        Responda apenas sobre como este portfólio foi construído.
     """
 }
 

@@ -347,6 +347,24 @@ img {
     border-color: var(--border-hover);
 }
 
+.lista-de-conversas .conversas-fechadas .arquivada.aberta {
+    background-color: var(--hover-surface);
+    border-color: var(--border-hover);
+}
+
+.lista-de-conversas .conversas-fechadas .lista-arquivados {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.lista-de-conversas .conversas-fechadas .lista-arquivados[hidden] {
+    display: none;
+}
+
 /* 5.5) Item reutilizavel de conversa fechada */
 .lista-de-conversas .conversas-fechadas .chat-fechado-container {
     margin-left: 10px;

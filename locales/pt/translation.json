@@ -86,6 +86,8 @@
   "project_pdz_title": "PDZ: Manipulação de arquivos",
   "project_swift_title": "Swift-File: Busca acelerada",
   "project_game_title": "Game-Verse: E-commerce",
+  "project_reunioes_title": "Reuniões_aut",
+  "project_portfolio_title": "Portfólio Interativo",
   "confirm_clear_history": "Deseja apagar todo o histórico com {name}?",
   "initial_matheus": "Olá! Sou o assistente do Matheus. Gostaria de saber sobre as tecnologias que ele usa ou sobre as experiências profissionais?",
   "initial_generic": "Bem-vindo ao repositório do {project}! O que você quer saber sobre o código ou a arquitetura deste projeto?",
@@ -110,5 +112,13 @@
   "faq_game_verse": [
     { "q": "O que é o Game-Verse?", "a": "Game-Verse é uma plataforma de e-commerce." },
     { "q": "Quais decisões de arquitetura foram tomadas?", "a": "Ainda estou completando os detalhes técnicos deste projeto — volte em breve para essa resposta." }
+  ],
+  "faq_reunioes_aut": [
+    { "q": "O que é o Reuniões_aut?", "a": "Reuniões_aut é um projeto novo que desenvolvi. Estou preparando os detalhes técnicos para publicar aqui em breve." }
+  ],
+  "faq_portfolio_interativo": [
+    { "q": "Como esse portfólio foi construído?", "a": "É um front-end em HTML, CSS e JavaScript puro, com back-end em Flask. A interface simula um app de mensagens, com tema claro/escuro e tradução em português, inglês e espanhol via i18next." },
+    { "q": "O chat usa inteligência artificial?", "a": "Por padrão, o chat responde com perguntas prontas — sem custo e sem depender de nenhum serviço externo. Também existe um gancho opcional para IA via Hugging Face, ativado apenas se um token for configurado no servidor." },
+    { "q": "O código está disponível?", "a": "Sim! O repositório está no meu GitHub — acesse pelo ícone de contato na barra lateral." }
   ]
 }

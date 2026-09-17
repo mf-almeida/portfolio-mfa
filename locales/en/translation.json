@@ -86,6 +86,8 @@
   "project_pdz_title": "PDZ: File handling",
   "project_swift_title": "Swift-File: Accelerated search",
   "project_game_title": "Game-Verse: E-commerce",
+  "project_reunioes_title": "Reuniões_aut",
+  "project_portfolio_title": "Interactive Portfolio",
   "confirm_clear_history": "Do you want to delete all history with {name}?",
   "initial_matheus": "Hi! I am Matheus' assistant. Would you like to know about his technologies or professional experience?",
   "initial_generic": "Welcome to the {project} repository! What would you like to know about its code or architecture?",
@@ -110,5 +112,13 @@
   "faq_game_verse": [
     { "q": "What is Game-Verse?", "a": "Game-Verse is an e-commerce platform." },
     { "q": "What architecture decisions were made?", "a": "I'm still completing the technical details of this project — check back soon for this answer." }
+  ],
+  "faq_reunioes_aut": [
+    { "q": "What is Reuniões_aut?", "a": "Reuniões_aut is a new project I built. I'm preparing the technical details to publish here soon." }
+  ],
+  "faq_portfolio_interativo": [
+    { "q": "How was this portfolio built?", "a": "It's a plain HTML, CSS and JavaScript front-end, with a Flask back-end. The interface simulates a messaging app, with light/dark themes and translations in Portuguese, English and Spanish via i18next." },
+    { "q": "Does the chat use artificial intelligence?", "a": "By default, the chat answers with ready-made questions — free and with no external dependency. There's also an optional AI hook via Hugging Face, only enabled if a token is configured on the server." },
+    { "q": "Is the source code available?", "a": "Yes! The repository is on my GitHub — reach it through the contact icon in the sidebar." }
   ]
 }

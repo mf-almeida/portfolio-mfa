@@ -899,22 +899,76 @@ body.light .modal {
 .about-modal-body {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.about-perfil {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 6px;
+    gap: 4px;
 }
 
 .about-foto {
-    width: 96px;
-    height: 96px;
+    width: 108px;
+    height: 108px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
-    border: 2px solid var(--border-soft);
+    margin-bottom: 8px;
+    border: 3px solid var(--border-hover);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
-.about-modal-body .modal-description {
-    text-align: left;
+.about-nome {
+    font-family: "Victor Mono", monospace;
+    font-size: 17px;
+    color: var(--text-main);
+}
+
+.about-tagline {
+    font-size: 13px;
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.about-tag {
+    border: 1px solid var(--border-hover);
+    border-radius: 16px;
+    padding: 6px 13px;
+    font-family: "Victor Mono", monospace;
+    font-size: 13px;
+    background: var(--bg-search);
+    white-space: nowrap;
+}
+
+.about-bio {
+    margin: 0;
+    padding-top: 4px;
+    border-top: 1px solid var(--border-soft);
+}
+
+.about-agradecimento {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border-left: 3px solid var(--border-hover);
+    background: var(--bg-search);
+}
+
+.about-agradecimento p {
+    margin: 0;
+    font-style: italic;
+    line-height: 1.55;
+    opacity: 0.9;
 }
 
 .contact-grid {

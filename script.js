@@ -17,12 +17,12 @@ const projetosData = {
     "swift-file": {
         tituloKey: "project_swift_title",
         defaultTitle: "Swift-File: Busca acelerada",
-        avatar: "img/swift-file.svg"
+        avatar: "img/swift-file.webp"
     },
     "game-verse": {
         tituloKey: "project_game_title",
         defaultTitle: "Game-Verse: E-commerce",
-        avatar: "img/game-verse.svg"
+        avatar: "img/game-verse.webp"
     }
 };
 
@@ -297,6 +297,7 @@ function applyTranslations() {
         }
 
         renderizarHistoricoDoContato(chatAtivo);
+        renderizarPerguntasProntas(chatAtivo);
 
         const avatarEl = document.getElementById("chat-avatar");
         if (avatarEl && projetosData[chatAtivo]) {
@@ -564,6 +565,60 @@ async function atualizarAvatarDoChat(srcAvatar, tituloProjeto) {
     avatarEl.classList.remove("carregando");
 }
 
+function faqKeyPara(idProjeto) {
+    return `faq_${idProjeto.replace(/-/g, "_")}`;
+}
+
+function obterPerguntasProntas(idProjeto) {
+    if (!window.i18next || !i18nReady) {
+        return [];
+    }
+
+    const itens = window.i18next.t(faqKeyPara(idProjeto), { returnObjects: true, defaultValue: [] });
+    return Array.isArray(itens) ? itens : [];
+}
+
+function responderComPerguntaPronta(idProjeto, item) {
+    if (chatAtivo !== idProjeto || !item) {
+        return;
+    }
+
+    salvarERenderizarMensagem(idProjeto, item.q, "usuario", true);
+    setChatStatus("typing");
+
+    window.setTimeout(() => {
+        salvarERenderizarMensagem(idProjeto, item.a, "bot", true);
+        if (chatAtivo === idProjeto) {
+            setChatStatus("online");
+        }
+    }, 350);
+}
+
+function renderizarPerguntasProntas(idProjeto) {
+    const container = document.getElementById("perguntas-rapidas");
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+    const itens = obterPerguntasProntas(idProjeto);
+
+    if (!itens.length) {
+        container.setAttribute("aria-hidden", "true");
+        return;
+    }
+
+    container.setAttribute("aria-hidden", "false");
+    itens.forEach((item) => {
+        const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "pergunta-rapida";
+        botao.textContent = item.q;
+        botao.addEventListener("click", () => responderComPerguntaPronta(idProjeto, item));
+        container.appendChild(botao);
+    });
+}
+
 function gerarMensagemInicial(idProjeto) {
     if (idProjeto === "matheus") {
         return {
@@ -773,6 +828,7 @@ function abrirChat(idProjeto) {
     }
 
     atualizarAvatarDoChat(info.avatar, tituloProjeto);
+    renderizarPerguntasProntas(idProjeto);
 
     const historico = carregarMensagensDoContato(idProjeto);
     if (historico.length > 0) {
@@ -856,7 +912,7 @@ function enviarMensagem() {
 
     const idContatoNoEnvio = chatAtivo;
 
-    fetch("http://127.0.0.1:5000/chat", {
+    fetch("/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

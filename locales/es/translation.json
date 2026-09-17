@@ -78,7 +78,8 @@
   "kanban_card_analytics_title": "Panel de analitica",
   "kanban_card_analytics_desc": "Métricas de uso y engagement por proyecto.",
   "kanban_card_portfolio_ia_title": "Portafolio I.A.",
-"kanban_card_portfolio_ia_desc": "Actualizar este portafolio para una interacción directa con una I.A.",
+  "kanban_card_portfolio_ia_desc": "Actualizar este portafolio para una interacción directa con una I.A.",
+  "close": "Cerrar",
   "close_modal": "Cerrar modal",
   "close_form": "Cerrar formulario",
   "project_matheus_title": "Matheus Fonseca Almeida",
@@ -88,5 +89,26 @@
   "confirm_clear_history": "¿Deseas borrar todo el historial con {name}?",
   "initial_matheus": "¡Hola! Soy el asistente de Matheus. ¿Quieres saber sobre las tecnologías que usa o sobre su experiencia profesional?",
   "initial_generic": "¡Bienvenido al repositorio de {project}! ¿Qué quieres saber sobre el código o la arquitectura de este proyecto?",
-  "server_offline": "Lo siento, mi servidor mental (Flask) está desconectado ahora."
+  "server_offline": "Lo siento, mi servidor mental (Flask) está desconectado ahora.",
+  "quick_replies_title": "Preguntas sugeridas",
+  "ai_fallback_message": "Por ahora estoy respondiendo con preguntas listas. Elige una de las sugerencias arriba o reformula tu mensaje.",
+  "faq_matheus": [
+    { "q": "¿Con qué tecnologías trabajas?", "a": "Trabajo principalmente con Python y Flask en el back-end, y JavaScript, HTML y CSS en el front-end. Este mismo portafolio fue construido con estas tecnologías." },
+    { "q": "¿Cómo puedo contactarte?", "a": "Usa el ícono de contacto en la barra lateral (email, LinkedIn o GitHub), o el botón de solicitud de servicio, que abre un formulario rápido." },
+    { "q": "¿Dónde veo tus otros proyectos?", "a": "Todos mis proyectos están listados en la lista de conversaciones a la izquierda — haz clic en cualquiera de ellos para saber más sobre su arquitectura y tecnologías." }
+  ],
+  "faq_pdz": [
+    { "q": "¿Qué es PDF-Z?", "a": "PDF-Z es una aplicación Flask para manipular PDFs: unir, dividir y convertir hacia/desde Word e Imagen." },
+    { "q": "¿Cómo cuida PDF-Z la privacidad (LGPD)?", "a": "La arquitectura tiene foco en LGPD: el procesamiento ocurre casi 100% en memoria RAM usando BytesIO, sin escribir en disco — excepto en la conversión a Word, que usa archivos temporales (tempfile)." },
+    { "q": "¿Qué librerías usa el proyecto?", "a": "Las principales son Flask, PyMuPDF, pikepdf y pdf2docx." },
+    { "q": "¿Cómo funciona el progreso de las operaciones?", "a": "El sistema de progreso usa Server-Sent Events (SSE) para actualizar el estado en tiempo real durante el procesamiento." }
+  ],
+  "faq_swift_file": [
+    { "q": "¿Qué es Swift-File?", "a": "Swift-File es un explorador de archivos optimizado, enfocado en búsqueda acelerada y máximo rendimiento." },
+    { "q": "¿Qué tecnologías se usaron?", "a": "Todavía estoy completando los detalles técnicos de este proyecto — vuelve pronto para esta respuesta." }
+  ],
+  "faq_game_verse": [
+    { "q": "¿Qué es Game-Verse?", "a": "Game-Verse es una plataforma de e-commerce." },
+    { "q": "¿Qué decisiones de arquitectura se tomaron?", "a": "Todavía estoy completando los detalles técnicos de este proyecto — vuelve pronto para esta respuesta." }
+  ]
 }

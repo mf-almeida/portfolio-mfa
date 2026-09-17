@@ -178,13 +178,13 @@
                     </button>
 
                     <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('swift-file')">
-                        <img src="img/swift-file.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <img src="img/swift-file.webp" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
                         <span class="nome-conversa" data-i18n="project_swift_title">Swift-File: Busca acelerada</span>
                         <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
 
                     <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('game-verse')">
-                        <img src="img/game-verse.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <img src="img/game-verse.webp" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
                         <span class="nome-conversa" data-i18n="project_game_title">Game-Verse: E-commerce</span>
                         <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
@@ -215,6 +215,8 @@
                     </div>
 
                     <div id="chat-mensagens" class="chat-mensagens"></div>
+
+                    <div id="perguntas-rapidas" class="perguntas-rapidas" aria-hidden="true"></div>
 
                     <div class="chat-input-area">
                         <input type="text" id="input-mensagem" placeholder="Digite uma pergunta sobre o projeto..." onkeypress="verificarEnter(event)" data-i18n-placeholder="chat_input_placeholder">

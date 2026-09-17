@@ -89,5 +89,26 @@
   "confirm_clear_history": "Do you want to delete all history with {name}?",
   "initial_matheus": "Hi! I am Matheus' assistant. Would you like to know about his technologies or professional experience?",
   "initial_generic": "Welcome to the {project} repository! What would you like to know about its code or architecture?",
-  "server_offline": "Sorry, my Flask brain server is offline right now."
+  "server_offline": "Sorry, my Flask brain server is offline right now.",
+  "quick_replies_title": "Suggested questions",
+  "ai_fallback_message": "Right now I'm answering with ready-made questions. Pick one of the suggestions above or rephrase your message.",
+  "faq_matheus": [
+    { "q": "What technologies do you work with?", "a": "I mainly work with Python and Flask on the back-end, and JavaScript, HTML and CSS on the front-end. This portfolio itself was built with these technologies." },
+    { "q": "How can I contact you?", "a": "Use the contact icon in the sidebar (email, LinkedIn or GitHub), or the service request button, which opens a quick form." },
+    { "q": "Where can I see your other projects?", "a": "All my projects are listed in the conversation list on the left — click any of them to learn more about its architecture and technologies." }
+  ],
+  "faq_pdz": [
+    { "q": "What is PDF-Z?", "a": "PDF-Z is a Flask application to manipulate PDFs: merge, split and convert to/from Word and Image." },
+    { "q": "How does PDF-Z handle privacy (LGPD)?", "a": "The architecture focuses on LGPD compliance: processing happens almost entirely in RAM using BytesIO, without writing to disk — except for the Word conversion, which uses temporary files (tempfile)." },
+    { "q": "Which libraries does the project use?", "a": "The main ones are Flask, PyMuPDF, pikepdf and pdf2docx." },
+    { "q": "How does the progress tracking work?", "a": "The progress system uses Server-Sent Events (SSE) to update status in real time during processing." }
+  ],
+  "faq_swift_file": [
+    { "q": "What is Swift-File?", "a": "Swift-File is an optimized file explorer focused on accelerated search and extreme performance." },
+    { "q": "Which technologies were used?", "a": "I'm still completing the technical details of this project — check back soon for this answer." }
+  ],
+  "faq_game_verse": [
+    { "q": "What is Game-Verse?", "a": "Game-Verse is an e-commerce platform." },
+    { "q": "What architecture decisions were made?", "a": "I'm still completing the technical details of this project — check back soon for this answer." }
+  ]
 }

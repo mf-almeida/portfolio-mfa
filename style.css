@@ -394,7 +394,8 @@ img {
 }
 
 /* Quando o avatar for SVG, centraliza dentro do circulo */
-.lista-de-conversas .conversas-fechadas .chat-fechado-container .chat-fechado[src$=".svg"] {
+.lista-de-conversas .conversas-fechadas .chat-fechado-container .chat-fechado[src$=".svg"],
+.lista-de-conversas .conversas-fechadas .chat-fechado-container .chat-fechado[src$=".webp"] {
     object-fit: contain;
     object-position: center;
     padding: 4px;
@@ -668,6 +669,35 @@ button#theme-toggle:hover {
     gap: 10px;
     background-color: var(--bg-main);
     /* Se quiser colocar uma textura de fundo de Wpp, é aqui */
+}
+
+/* Perguntas prontas (quick replies) */
+.perguntas-rapidas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 20px 12px;
+    flex-shrink: 0;
+}
+
+.perguntas-rapidas:empty {
+    display: none;
+}
+
+.pergunta-rapida {
+    background-color: transparent;
+    border: 1px solid var(--border-hover);
+    color: var(--text-main);
+    border-radius: 16px;
+    padding: 7px 14px;
+    font-family: "Victor Mono", monospace;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pergunta-rapida:hover {
+    background-color: var(--hover-surface);
 }
 
 /* Barra de Digitação */

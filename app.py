@@ -1,3 +1,6 @@
+import os
+
+import requests
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
@@ -5,7 +8,7 @@ from flask_cors import CORS
 app = Flask(__name__, static_folder=".", static_url_path="")
 CORS(app)
 
-# 2. Prompts por projeto
+# 2. Prompts por projeto (usados apenas se a IA estiver configurada)
 PROMPTS_DOS_PROJETOS = {
     "matheus": """
         Você é o assistente virtual pessoal do Matheus Fonseca Almeida.
@@ -35,7 +38,37 @@ PROMPTS_DOS_PROJETOS = {
     """
 }
 
-# 3. Rotas
+# 3. IA opcional via Hugging Face (Inference API gratuito)
+#
+# Nada aqui é chamado por padrão. A IA só entra em ação se a variável de
+# ambiente HF_API_TOKEN estiver definida (token gratuito, sem cartão de
+# credito, gerado em https://huggingface.co/settings/tokens). Sem o token,
+# o /chat responde com a mensagem estática abaixo e as perguntas prontas do
+# front-end continuam funcionando normalmente, sem nenhuma chamada externa.
+HF_API_TOKEN = os.environ.get("HF_API_TOKEN", "").strip()
+HF_MODEL = os.environ.get("HF_MODEL", "HuggingFaceH4/zephyr-7b-beta").strip()
+HF_API_URL = f"https://api-inference.huggingface.co/models/{HF_MODEL}"
+HF_TIMEOUT_SEGUNDOS = 20
+
+
+def perguntar_para_hugging_face(prompt_sistema, pergunta_usuario):
+    payload = {
+        "inputs": f"{prompt_sistema.strip()}\n\nPergunta do visitante: {pergunta_usuario}\nResposta:",
+        "parameters": {"max_new_tokens": 200, "return_full_text": False},
+    }
+    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+
+    resposta = requests.post(HF_API_URL, headers=headers, json=payload, timeout=HF_TIMEOUT_SEGUNDOS)
+    resposta.raise_for_status()
+    dados = resposta.json()
+
+    if isinstance(dados, list) and dados and "generated_text" in dados[0]:
+        return dados[0]["generated_text"].strip()
+
+    raise ValueError(f"Formato de resposta inesperado da Hugging Face: {dados}")
+
+
+# 4. Rotas
 @app.route("/")
 def home():
     return send_from_directory(".", "index.html")
@@ -56,20 +89,21 @@ def chat():
     if not id_projeto or not mensagem_usuario:
         return jsonify({"erro": "Projeto ou mensagem ausente"}), 400
 
-    try:
-        texto_resposta = (
-            "A integração com IA externa foi removida deste projeto. "
-            "No momento, não há provedor configurado para responder automaticamente. "
-            "Projeto selecionado: "
-            f"{id_projeto}."
-        )
-        print(f"Chat recebido para o projeto: {id_projeto}")
-        return jsonify({"resposta": texto_resposta})
+    prompt_sistema = PROMPTS_DOS_PROJETOS.get(id_projeto)
 
-    except Exception as e:
-        print(f"Erro na IA: {str(e)}")
+    if not HF_API_TOKEN or not prompt_sistema:
         return jsonify({
-            "resposta": "Nao consegui processar a mensagem no momento."
+            "resposta": "No momento estou respondendo com perguntas prontas. "
+                        "Escolha uma das perguntas sugeridas ou reformule sua mensagem."
+        })
+
+    try:
+        texto_resposta = perguntar_para_hugging_face(prompt_sistema, mensagem_usuario)
+        return jsonify({"resposta": texto_resposta})
+    except Exception as e:
+        print(f"Erro ao consultar a Hugging Face: {str(e)}")
+        return jsonify({
+            "resposta": "Não consegui falar com a IA agora. Tente uma das perguntas sugeridas."
         })
 
 

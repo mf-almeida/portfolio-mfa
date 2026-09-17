@@ -1,5 +1,5 @@
 {
-  "page_title": "Interactive Portfolio",
+  "page_title": "Portfolio - Mfalmeida",
   "icon_chat": "Chat",
   "icon_status": "Status",
   "icon_contact": "Contact",
@@ -26,7 +26,7 @@
   "profile_picture": "Profile picture",
   "empty_ai_assistant": "AI Assistant",
   "empty_title": "Interactive Portfolio",
-  "empty_subtitle": "Select a project in the sidebar to talk with the AI about it.",
+  "empty_subtitle": "Select a project in the sidebar to talk about it.",
   "empty_footer": "Built by mfalmeida",
   "chat_avatar": "Avatar",
   "chat_project_placeholder": "Project name",
@@ -77,6 +77,8 @@
   "kanban_card_proto_desc": "Previous version kept only as reference.",
   "kanban_card_analytics_title": "Analytics dashboard",
   "kanban_card_analytics_desc": "Usage and engagement metrics by project.",
+  "kanban_card_portfolio_ia_title": "Portfolio A.I.",
+  "kanban_card_portfolio_ia_desc": "Update this portfolio for direct interaction with an A.I.",
   "close": "Close",
   "close_modal": "Close modal",
   "close_form": "Close form",
@@ -84,8 +86,55 @@
   "project_pdz_title": "PDZ: File handling",
   "project_swift_title": "Swift-File: Accelerated search",
   "project_game_title": "Game-Verse: E-commerce",
+  "project_reunioes_title": "Reuniões_aut",
+  "project_portfolio_title": "Interactive Portfolio",
   "confirm_clear_history": "Do you want to delete all history with {name}?",
   "initial_matheus": "Hi! I am Matheus' assistant. Would you like to know about his technologies or professional experience?",
   "initial_generic": "Welcome to the {project} repository! What would you like to know about its code or architecture?",
-  "server_offline": "Sorry, my Flask brain server is offline right now."
+  "server_offline": "Sorry, my Flask brain server is offline right now.",
+  "quick_replies_title": "Suggested questions",
+  "ai_fallback_message": "Right now I'm answering with ready-made questions. Pick one of the suggestions above or rephrase your message.",
+  "faq_matheus": [
+    { "q": "What technologies do you work with?", "a": "I'm a full-stack developer with a solid foundation, able to work and build projects across several languages with quick adaptation. My stack includes Python, C, C++, JS, TypeScript, PHP, Java and R. I also have hands-on experience with frameworks like React, Flask, Django and Drupal 11." },
+    { "q": "How can I contact you?", "a": "You can reach me by email at pessoal.matheus.fonseca@gmail.com or through my LinkedIn (linkedin.com/in/matheus-almeida-53415a2a5)." },
+    { "q": "Where can I see your other projects?", "a": "My code and contributions are available on my GitHub and LinkedIn. You can also check my articles and posts on the AWS Campus Builder program blog (builder.aws.com/start)." },
+    { "q": "What's your background and professional path?", "a": "I'm an Information Systems undergraduate at Estácio (expected 2028). I currently work as an IT Projects Analyst at Fundação CEPERJ, focused on structuring scalable, secure institutional projects. Before that, I was a Development Intern at SEFAZ/RJ. My path also includes leadership roles at Riotur events and work in the administrative-financial sector at Santa Casa. My leadership background and logical reasoning are further backed by 11 years in the Scout Movement and my role as a Student Leader at AWS Campus Builder." },
+    { "q": "Are you available for freelance work or new job opportunities?", "a": "Yes, I'm fully available for freelance proposals and new job opportunities. I'm flexible to work both in full-stack development (using languages like PHP, Python and JavaScript, plus frameworks) and in IT project analysis and management, applying Scrum, Business Intelligence (BI) knowledge and process automation. An important trait of my career and work philosophy is that I like building solutions with generalist architecture and layouts to release open-source for the community, reserving customizations, business rules and exclusive targeted content for the companies that hire my services." }
+  ],
+  "faq_pdz": [
+    { "q": "What is PDF-Z?", "a": "PDZ is a robust PDF manipulation solution built to run natively inside companies' and public agencies' internal systems. It was created to fight the \"Shadow IT\" problem, bringing together more than 14 full features — from splitting files and redacting sensitive data to direct digital-signature integration via Brazil's GOV.BR portal." },
+    { "q": "How does PDF-Z handle privacy and LGPD compliance?", "a": "Privacy was the project's main motivation. In the public and corporate sector, using third-party online services to handle PDFs creates Shadow IT risk, since there's no contractual guarantee of data integrity. Because PDZ runs internally, it ensures full data integrity and anonymization, so sensitive documents never leak to unauthorized clouds." },
+    { "q": "Which libraries does the project use?", "a": "The Python ecosystem is built around pypdf for structural manipulation and PDF security. Alongside it, the essential libraries are pdf2image, pdfplumber and pytesseract." },
+    { "q": "How does the progress tracking work?", "a": "The system gives clear visual feedback to the user, which is essential for heavier operations like image manipulation or text extraction, so the user always knows the exact status of a conversion, redaction or merge." },
+    { "q": "What was the biggest technical challenge in the project?", "a": "The biggest challenge was centralizing more than 14 complex manipulation tools (like precise redaction of sensitive data) in an optimized way, while also enabling a secure integration flow with the GOV.BR signature portal — all while keeping the PDF's strict file structure intact." },
+    { "q": "Is the code publicly available or open source?", "a": "Right now, the code isn't publicly available yet. My plan is to refine it and release it in the future as an official open-source project, serving as a free, secure corporate solution for companies and public institutions facing the same problem." }
+  ],
+  "faq_swift_file": [
+    { "q": "What is Swift-File?", "a": "Swift-File was built to solve a big problem in infrastructures that grow without organization: the difficulty of finding files across large databases or extensive network folders. With a web interface focused on user experience and efficiency, it locates lost documents and gives direct access to them. The system was validated running in a real work environment for about a year." },
+    { "q": "Which technologies were used in development?", "a": "The project was built with Python and the Flask framework on the backend. The whole direct, user-friendly web interface was built with HTML5, vanilla JavaScript and TailwindCSS." },
+    { "q": "How does the accelerated search work (what makes it so fast)?", "a": "The speed comes from pre-mapping. On first start, the system does a full scan and maps every file in the folder and its subfolders. The real technical edge is handling threads (parallel processing), which can be customized. Since the base is pre-mapped, searches return practically instant results, limited only by the machine's hardware." },
+    { "q": "What's the main advantage over a regular file explorer?", "a": "The main advantage is a drastic cut in search time: it turns a manual search in a regular file explorer (which can take up to 10 minutes) into a result delivered in under 1 second in most cases, with fast folder filtering. It also runs on its own servers, which guarantees maximum security for companies." },
+    { "q": "Is the project available to download or try out?", "a": "Right now I'm working on some updates to bring a more up-to-date visual identity. My goal is to make Swift-File an open-source solution soon, releasing it for the community." }
+  ],
+  "faq_game_verse": [
+    { "q": "What is Game-Verse?", "a": "It was my first web project, built during college. It came out of a real, challenging situation (especially before AI became mainstream): digital transformation. It's a custom e-commerce site built specifically for a company called Game-Verse." },
+    { "q": "Which frontend and backend technologies were used?", "a": "The project was built with classic technologies: HTML5, CSS and JS on the frontend, plus PHP integrated with MySQL on the backend. The whole local development environment was managed with XAMPP for tighter control." },
+    { "q": "How was the product and purchase flow (cart, orders) designed?", "a": "The flow was designed to offer a solid base e-commerce structure. The main idea behind the design and purchase flow is to let small businesses scale their online sales in a customized way, always preserving their own visual identity throughout the customer's buying journey." },
+    { "q": "Why was the project archived?", "a": "The project is archived because it represents my first version of a web system. I now plan to reevaluate it to improve the database relationships and modeling, as well as update the technologies behind the business logic." },
+    { "q": "Is the code or repository still accessible?", "a": "Right now it's closed while it goes through this rework. But I plan to soon release this layout and the whole e-commerce structure as open source, aiming to give small businesses a base to build their own scalable sales platform." }
+  ],
+  "faq_reunioes_aut": [
+    { "q": "What is Reuniões_aut and what problem does it solve?", "a": "Reuniões_aut is a secure corporate system focused on smart meeting-room scheduling and management, built as a key support tool during Fundação CEPERJ's structuring process. It solves schedule overlaps and unpredictability, bringing practicality to front-desk control and letting support teams (catering, cleaning) know exactly how many attendees to expect. Its biggest advantages are automated email notices (on booking creation, edits or cancellations) and support for swapping meetings, which detects conflicts in real time and provides the current organizer's details for a friendly negotiation, unblocking internal communication." },
+    { "q": "How does the system work in practice (booking, mediation, notices)?", "a": "It works strictly as a scheduling and management engine. In practice, the system lets you register, activate or deactivate rooms, create single or recurring bookings (with set limits), manage users and departments through an exclusive admin panel, and export bookings with one click to .ics format (compatible with Google Calendar, Outlook and Apple Calendar)." },
+    { "q": "Which technologies and integrations were implemented?", "a": "It's a deterministic, robust, lightweight application with no generative AI. The backend uses Python 3.9+ with Flask, and SQLite as the database (with planned PostgreSQL support). The frontend was built with native HTML, CSS and JavaScript, using a corporate 'Dark Premium' design with glassmorphism and modern typography (Inter/Outfit). Main integrations include .ics export, email delivery via Resend, and Google Calendar APIs." },
+    { "q": "How does the system handle privacy and sensitive corporate data?", "a": "Security is a core pillar of the project. The system follows a fully closed 'Deny-by-Default' architecture, with no public sign-up page (accounts only exist if created by an admin). Admin access has strict isolation (RBAC), requiring developer-level permission. Passwords use bcrypt hashing (cost factor 12) with a 72-character limit, and there's protection against user enumeration (generic login error messages). Ownership control also ensures only a booking's creator or an admin can view or edit its sensitive data." },
+    { "q": "Is Reuniões_aut in production, or is it an MVP/pilot?", "a": "It's a functional MVP already in active production. It was built quickly to immediately solve Fundação CEPERJ's scheduling and organization pain points, proving its value in practice. It was developed with good practices so it can solidly evolve into an open-source solution in the future." }
+  ],
+  "faq_portfolio_interativo": [
+    { "q": "How was this portfolio built?", "a": "I deliberately skipped the trend of heavily animated, ultra-polished resume sites — hand-built or AI-assisted — for something simpler: a plain HTML, CSS and JavaScript front-end with a Flask back-end, built as a single page with no framework, with light/dark themes and translations in Portuguese, English and Spanish via i18next." },
+    { "q": "Does the chat use artificial intelligence in the backend?", "a": "By default, no. Every card answers with ready-made questions I wrote and reviewed myself — free, with no external dependency and no risk of going offline. There's an optional AI hook (via Hugging Face's free tier) in the Flask backend, but it only kicks in if I configure a token on the server; this project never uses a paid service or a credit card." },
+    { "q": "Is the portfolio's source code publicly available?", "a": "The code already exists and is exactly what's running here. I haven't decided to open it up as a standalone project yet, but I do plan to evolve this same architecture — ready-made answers plus optional AI — into an open-source internal help-desk chat that companies could use for employees' questions, without paid generative AI costs." },
+    { "q": "Why choose this interactive chat format (WhatsApp Web style)?", "a": "A lot of people lean on ultra-polished designs and heavy animations, hand-made or AI-assisted, to show what they can do. I prefer a different path: bring simplicity to solutions that aren't open source and let visitors explore the system themselves. I used the layout of a widely known platform (WhatsApp Web) as reference because it already delivers a pleasant, direct visual result — seeing a conversation card, nobody has to think twice about clicking it to open the chat on the right panel. That's part of this site's UI/UX: reuse a pattern people already know to lower the friction for first-time visitors." },
+    { "q": "What were the biggest technical challenges building this site?", "a": "The biggest one was building SPA-like navigation (the kind you'd get with React) without using any framework — just combining JavaScript and CSS to switch between screens (chat list, open chat, status board) on the same page, with smooth transitions, without ever losing the conversation history, which stays saved in the browser's localStorage." }
+  ]
 }

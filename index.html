@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Limelight&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <title>Teste WPP (html + css)</title>
+        <title>Portfolio - Mfalmeida</title>
         <script src="https://unpkg.com/i18next@23.16.8/dist/umd/i18next.min.js"></script>
     </head>
     <body>
@@ -159,10 +159,18 @@
                 </div>
 
                 <div class="conversas-fechadas">
-                    <button class="arquivada">
+                    <button class="arquivada" type="button" id="toggle-arquivados" aria-expanded="false" aria-controls="lista-arquivados">
                         <img src="img/archive.svg" alt="Arquivadas" class="icon" data-i18n-title="icon_archived" data-i18n-alt="icon_archived">
                         <span data-i18n="archived_projects">Projetos arquivados</span>
                     </button>
+
+                    <div id="lista-arquivados" class="lista-arquivados" hidden>
+                        <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('game-verse')">
+                            <img src="img/game-verse.webp" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                            <span class="nome-conversa" data-i18n="project_game_title">Game-Verse: E-commerce</span>
+                            <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
+                        </button>
+                    </div>
 
                     <button class="chat-fechado-container" type="button" data-chat-type="conversation" onclick="abrirChat('matheus')">
                         <img src="img/ft-perfil.jpeg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
@@ -178,14 +186,20 @@
                     </button>
 
                     <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('swift-file')">
-                        <img src="img/swift-file.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <img src="img/swift-file.webp" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
                         <span class="nome-conversa" data-i18n="project_swift_title">Swift-File: Busca acelerada</span>
                         <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
 
-                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('game-verse')">
-                        <img src="img/game-verse.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
-                        <span class="nome-conversa" data-i18n="project_game_title">Game-Verse: E-commerce</span>
+                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('reunioes-aut')">
+                        <img src="img/icon_reunioes_aut.jpg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <span class="nome-conversa" data-i18n="project_reunioes_title">Reuniões_aut</span>
+                        <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
+                    </button>
+
+                    <button class="chat-fechado-container" type="button" data-chat-type="project" onclick="abrirChat('portfolio-interativo')">
+                        <img src="img/icon_icon.svg" alt="Foto de perfil" class="chat-fechado" data-i18n-alt="profile_picture">
+                        <span class="nome-conversa" data-i18n="project_portfolio_title">Portfólio Interativo</span>
                         <span class="rodape" data-i18n="conversation_cta">Clique para entrar na conversa</span>
                     </button>
                 </div>
@@ -195,7 +209,7 @@
                 <div id="tela-vazia" class="tela-vazia">
                     <img src="img/ia.svg" alt="Assistente IA" class="icon icon-apresentacao-ia" data-i18n-alt="empty_ai_assistant">
                     <h2 data-i18n="empty_title">Portfolio Interativo</h2>
-                    <span data-i18n="empty_subtitle">Selecione um projeto na barra lateral para conversar com a IA sobre ele.</span>
+                    <span data-i18n="empty_subtitle">Selecione um projeto na barra lateral para entender mais sobre ele.</span>
                     <span class="rodape-vazio" data-i18n="empty_footer">Desenvolvido por mfalmeida</span>
                 </div>
 
@@ -215,6 +229,8 @@
                     </div>
 
                     <div id="chat-mensagens" class="chat-mensagens"></div>
+
+                    <div id="perguntas-rapidas" class="perguntas-rapidas" aria-hidden="true"></div>
 
                     <div class="chat-input-area">
                         <input type="text" id="input-mensagem" placeholder="Digite uma pergunta sobre o projeto..." onkeypress="verificarEnter(event)" data-i18n-placeholder="chat_input_placeholder">
@@ -299,6 +315,11 @@
                     <article id="ideias__dashboard_analytics" class="kanban-card status-card">
                         <strong data-i18n="kanban_card_analytics_title">Dashboard de analytics</strong>
                         <p data-i18n="kanban_card_analytics_desc">Métricas de uso e engajamento por projeto.</p>
+                    </article>
+
+                    <article id="ideias__portfolio_ia" class="kanban-card status-card">
+                        <strong data-i18n="kanban_card_portfolio_ia_title">Portfolio I.A</strong>
+                        <p data-i18n="kanban_card_portfolio_ia_desc">Atualizar este portfolio para uma interação direta com uma I.A.</p>
                     </article>
                 </div>
             </div>

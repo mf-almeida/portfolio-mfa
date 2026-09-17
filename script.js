@@ -17,20 +17,31 @@ const projetosData = {
     "swift-file": {
         tituloKey: "project_swift_title",
         defaultTitle: "Swift-File: Busca acelerada",
-        avatar: "img/swift-file.svg"
+        avatar: "img/swift-file.webp"
     },
     "game-verse": {
         tituloKey: "project_game_title",
         defaultTitle: "Game-Verse: E-commerce",
-        avatar: "img/game-verse.svg"
+        avatar: "img/game-verse.webp"
+    },
+    "reunioes-aut": {
+        tituloKey: "project_reunioes_title",
+        defaultTitle: "Reuniões_aut",
+        avatar: "img/icon_reunioes_aut.jpg"
+    },
+    "portfolio-interativo": {
+        tituloKey: "project_portfolio_title",
+        defaultTitle: "Portfólio Interativo",
+        avatar: "img/icon_icon.svg"
     }
 };
 
 const themeToggle = document.getElementById("theme-toggle");
 const searchBar = document.getElementById("search-bar");
 const filterButtons = document.querySelectorAll(".filtros button[data-filter]");
-const listaConversas = document.querySelectorAll(".conversas-fechadas .chat-fechado-container");
-const botaoArquivada = document.querySelector(".conversas-fechadas .arquivada");
+const listaConversas = document.querySelectorAll(".conversas-fechadas > .chat-fechado-container");
+const botaoArquivada = document.getElementById("toggle-arquivados");
+const listaArquivados = document.getElementById("lista-arquivados");
 const btnLimparHistorico = document.getElementById("btn-limpar-historico");
 const languageShortcut = document.getElementById("language-shortcut");
 const languageMenu = document.getElementById("language-menu");
@@ -297,6 +308,7 @@ function applyTranslations() {
         }
 
         renderizarHistoricoDoContato(chatAtivo);
+        renderizarPerguntasProntas(chatAtivo);
 
         const avatarEl = document.getElementById("chat-avatar");
         if (avatarEl && projetosData[chatAtivo]) {
@@ -423,6 +435,20 @@ function initializeFilters() {
     });
 
     setConversationFilter(currentConversationFilter);
+}
+
+function initializeArquivados() {
+    if (!botaoArquivada || !listaArquivados) {
+        return;
+    }
+
+    botaoArquivada.addEventListener("click", () => {
+        const estaAberta = !listaArquivados.hidden;
+
+        listaArquivados.hidden = estaAberta;
+        botaoArquivada.setAttribute("aria-expanded", estaAberta ? "false" : "true");
+        botaoArquivada.classList.toggle("aberta", !estaAberta);
+    });
 }
 
 function initializeSearch() {
@@ -562,6 +588,60 @@ async function atualizarAvatarDoChat(srcAvatar, tituloProjeto) {
     }
 
     avatarEl.classList.remove("carregando");
+}
+
+function faqKeyPara(idProjeto) {
+    return `faq_${idProjeto.replace(/-/g, "_")}`;
+}
+
+function obterPerguntasProntas(idProjeto) {
+    if (!window.i18next || !i18nReady) {
+        return [];
+    }
+
+    const itens = window.i18next.t(faqKeyPara(idProjeto), { returnObjects: true, defaultValue: [] });
+    return Array.isArray(itens) ? itens : [];
+}
+
+function responderComPerguntaPronta(idProjeto, item) {
+    if (chatAtivo !== idProjeto || !item) {
+        return;
+    }
+
+    salvarERenderizarMensagem(idProjeto, item.q, "usuario", true);
+    setChatStatus("typing");
+
+    window.setTimeout(() => {
+        salvarERenderizarMensagem(idProjeto, item.a, "bot", true);
+        if (chatAtivo === idProjeto) {
+            setChatStatus("online");
+        }
+    }, 350);
+}
+
+function renderizarPerguntasProntas(idProjeto) {
+    const container = document.getElementById("perguntas-rapidas");
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+    const itens = obterPerguntasProntas(idProjeto);
+
+    if (!itens.length) {
+        container.setAttribute("aria-hidden", "true");
+        return;
+    }
+
+    container.setAttribute("aria-hidden", "false");
+    itens.forEach((item) => {
+        const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "pergunta-rapida";
+        botao.textContent = item.q;
+        botao.addEventListener("click", () => responderComPerguntaPronta(idProjeto, item));
+        container.appendChild(botao);
+    });
 }
 
 function gerarMensagemInicial(idProjeto) {
@@ -773,6 +853,7 @@ function abrirChat(idProjeto) {
     }
 
     atualizarAvatarDoChat(info.avatar, tituloProjeto);
+    renderizarPerguntasProntas(idProjeto);
 
     const historico = carregarMensagensDoContato(idProjeto);
     if (historico.length > 0) {
@@ -856,7 +937,7 @@ function enviarMensagem() {
 
     const idContatoNoEnvio = chatAtivo;
 
-    fetch("http://127.0.0.1:5000/chat", {
+    fetch("/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1109,6 +1190,7 @@ function closePortfolioFormModal() {
 }
 
 initializeTheme();
+initializeArquivados();
 initializeSearch();
 initializeFilters();
 preloadAvatares();

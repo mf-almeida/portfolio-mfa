@@ -1,5 +1,5 @@
 {
-  "page_title": "Portfólio Interativo",
+  "page_title": "Portfolio - Mfalmeida",
   "icon_chat": "Chat",
   "icon_status": "Status",
   "icon_contact": "Contato",
@@ -26,7 +26,7 @@
   "profile_picture": "Foto de perfil",
   "empty_ai_assistant": "Assistente IA",
   "empty_title": "Portfólio Interativo",
-  "empty_subtitle": "Selecione um projeto na barra lateral para conversar com a IA sobre ele.",
+  "empty_subtitle": "Selecione um projeto na barra lateral para entender mais sobre ele.",
   "empty_footer": "Desenvolvido por mfalmeida",
   "chat_avatar": "Avatar",
   "chat_project_placeholder": "Nome do Projeto",
@@ -77,6 +77,8 @@
   "kanban_card_proto_desc": "Versao anterior preservada apenas para referencia.",
   "kanban_card_analytics_title": "Dashboard de analytics",
   "kanban_card_analytics_desc": "Métricas de uso e engajamento por projeto.",
+  "kanban_card_portfolio_ia_title": "Portfolio I.A",
+  "kanban_card_portfolio_ia_desc": "Atualizar este portfolio para uma interação direta com uma I.A.",
   "close": "Fechar",
   "close_modal": "Fechar modal",
   "close_form": "Fechar formulário",
@@ -84,8 +86,55 @@
   "project_pdz_title": "PDZ: Manipulação de arquivos",
   "project_swift_title": "Swift-File: Busca acelerada",
   "project_game_title": "Game-Verse: E-commerce",
+  "project_reunioes_title": "Reuniões_aut",
+  "project_portfolio_title": "Portfólio Interativo",
   "confirm_clear_history": "Deseja apagar todo o histórico com {name}?",
   "initial_matheus": "Olá! Sou o assistente do Matheus. Gostaria de saber sobre as tecnologias que ele usa ou sobre as experiências profissionais?",
   "initial_generic": "Bem-vindo ao repositório do {project}! O que você quer saber sobre o código ou a arquitetura deste projeto?",
-  "server_offline": "Desculpe, meu servidor mental (Flask) está offline agora."
+  "server_offline": "Desculpe, meu servidor mental (Flask) está offline agora.",
+  "quick_replies_title": "Perguntas sugeridas",
+  "ai_fallback_message": "No momento estou respondendo com perguntas prontas. Escolha uma das perguntas sugeridas acima ou reformule sua mensagem.",
+  "faq_matheus": [
+    { "q": "Quais tecnologias você domina?", "a": "Sou um desenvolvedor full stack com uma base sólida, capaz de atuar e desenvolver projetos em diversas linguagens com rápida adaptação. Minha stack inclui Python, C, C++, JS, TypeScript, PHP, Java e R. Também tenho experiência prática com frameworks como React, Flask, Django e Drupal 11." },
+    { "q": "Como posso entrar em contato?", "a": "Você pode entrar em contato comigo pelo e-mail pessoal.matheus.fonseca@gmail.com ou pelo meu LinkedIn (linkedin.com/in/matheus-almeida-53415a2a5)." },
+    { "q": "Onde vejo seus outros projetos?", "a": "Meus códigos e contribuições estão disponíveis no meu GitHub e no meu LinkedIn. Além disso, você pode conferir meus artigos e publicações no blog do programa AWS Campus Builder (builder.aws.com/start)." },
+    { "q": "Qual sua formação e trajetória profissional?", "a": "Sou graduando em Sistemas de Informação pela Estácio (previsão 2028). Atualmente, trabalho como Analista de Projetos de TI na Fundação CEPERJ, focando em estruturar projetos escaláveis e seguros institucionais. Anteriormente, atuei como Estagiário de Desenvolvimento na SEFAZ/RJ. Minha trajetória também inclui papéis de liderança em eventos pela Riotur e atuação no setor administrativo-financeiro da Santa Casa. Por fim, minha bagagem de liderança e raciocínio lógico é fortemente apoiada por 11 anos no Movimento Escoteiro e pela minha posição como Student Leader no AWS Campus Builder." },
+    { "q": "Você está disponível para freelance ou novas oportunidades de vaga?", "a": "Sim, estou totalmente disponível para receber propostas de trabalho freelance e novas oportunidades de vagas. Tenho flexibilidade para atuar tanto no desenvolvimento full-stack (utilizando linguagens como PHP, Python e JavaScript, além de frameworks) quanto na análise e gestão de projetos de TI, aplicando Scrum, conhecimentos em Business Intelligence (BI) e automação de processos. Um traço importante da minha carreira e filosofia de trabalho é que gosto de desenvolver soluções com arquitetura e layouts generalistas para disponibilizar em código aberto para a comunidade, reservando as personalizações, regras de negócio e conteúdos direcionados de forma exclusiva para as empresas que contratam os meus serviços." }
+  ],
+  "faq_pdz": [
+    { "q": "O que é o PDF-Z?", "a": "O PDZ é uma solução robusta para manipulação de arquivos PDF desenvolvida para rodar nativamente nos sistemas internos de empresas e órgãos públicos. A ferramenta surgiu para combater o problema do \"Shadow IT\", reunindo mais de 14 funcionalidades completas — que vão desde a divisão de arquivos e censura de dados, até a integração direta para assinaturas digitais via portal GOV.BR." },
+    { "q": "Como o PDF-Z cuida da privacidade e conformidade com a LGPD?", "a": "A privacidade foi a grande motivação do projeto. No setor público e corporativo, utilizar serviços online de terceiros para manipular PDFs gera o risco do Shadow IT, pois não há garantia contratual da integridade dos dados. Como o PDZ roda internamente, ele assegura a total integridade e anonimização das informações, sem que documentos sensíveis dos usuários vazem para nuvens não autorizadas." },
+    { "q": "Quais bibliotecas o projeto utiliza?", "a": "O ecossistema do projeto em Python explicita o uso do pypdf para a manipulação estrutural e segurança de arquivos PDF. Além disso, as bibliotecas essenciais para usar em conjunto com o pypdf na ferramenta são: pdf2image, pdfplumber e pytesseract." },
+    { "q": "Como funciona o acompanhamento de progresso das operações?", "a": "O sistema fornece um feedback visual claro para o usuário, o que é fundamental em operações mais pesadas de manipulação de imagem ou extração de texto, garantindo que o usuário saiba exatamente o status da conversão, censura ou mesclagem do documento." },
+    { "q": "Qual foi o maior desafio técnico enfrentado no projeto?", "a": "O maior desafio foi centralizar as mais de 14 ferramentas complexas de manipulação (como a censura precisa de informações sensíveis) de forma otimizada, e ao mesmo tempo viabilizar o fluxo seguro de integração com a assinatura do portal GOV.BR, tudo mantendo a rigorosa estrutura do arquivo PDF intacta." },
+    { "q": "O código está disponível publicamente ou é open source?", "a": "No momento, o código ainda não está disponível publicamente. Minha intenção é refiná-lo e publicá-lo futuramente como um projeto open-source oficial, servindo como uma solução corporativa segura e gratuita para empresas e instituições públicas que sofrem com o mesmo problema." }
+  ],
+  "faq_swift_file": [
+    { "q": "O que é o Swift-File?", "a": "O Swift-File é uma solução desenvolvida para resolver um grande problema de infraestruturas que crescem sem organização: a dificuldade de encontrar arquivos em grandes bases de dados ou pastas de rede extensas. Com uma interface web focada na experiência do usuário e na eficiência, ele localiza documentos perdidos e fornece acesso direto a eles. O sistema foi validado rodando em um ambiente real de trabalho por cerca de 1 ano." },
+    { "q": "Quais tecnologias foram utilizadas no desenvolvimento?", "a": "O projeto foi construído utilizando Python com o framework Flask no backend. Toda a interface web direta e amigável foi desenvolvida utilizando HTML5, JavaScript (JS) vanilla e TailwindCSS." },
+    { "q": "Como funciona a busca acelerada (o que torna o mecanismo tão rápido)?", "a": "A velocidade vem do mapeamento prévio. Logo no primeiro start, o sistema faz uma varredura completa e mapeia todos os arquivos da pasta e suas subpastas. O grande trunfo tecnológico é o manuseio de Threads (processamento paralelo) que pode ser personalizado. Como a base fica pré-mapeada, a busca atinge resultados praticamente instantâneos, dependendo apenas do hardware da máquina." },
+    { "q": "Qual é o principal diferencial em relação a um explorador de arquivos comum?", "a": "O principal diferencial é a redução drástica no tempo de pesquisa: ele transforma uma busca manual no explorador de arquivos comum (que pode levar até 10 minutos) em um resultado entregue em menos de 1 segundo na maioria dos casos, permitindo filtragem rápida por pastas. Além disso, a ferramenta roda em servidores próprios, o que garante máxima segurança para as empresas." },
+    { "q": "O projeto está disponível para download ou testes práticos?", "a": "No momento, estou desenvolvendo alguns updates para trazer uma versão com uma identidade visual mais atualizada. O meu objetivo é tornar o Swift-File uma solução de código aberto (open-source) em breve, disponibilizando-o para a comunidade." }
+  ],
+  "faq_game_verse": [
+    { "q": "O que é o Game-Verse?", "a": "Foi o meu primeiro projeto web, desenvolvido durante a faculdade. Ele nasceu para abordar uma situação real e desafiadora (especialmente antes da popularização das I.A's): a transformação digital. Trata-se de um e-commerce personalizado criado especificamente para uma empresa chamada Game-Verse." },
+    { "q": "Quais tecnologias de frontend e backend foram utilizadas?", "a": "O projeto foi construído utilizando tecnologias clássicas: HTML5, CSS e JS no frontend, além de PHP integrado ao MySQL no backend. Para garantir um controle maior e ambiente local, o desenvolvimento inteiro foi gerenciado pelo XAMPP." },
+    { "q": "Como foi idealizado o fluxo de produtos e compras (carrinho e pedidos)?", "a": "O fluxo foi arquitetado para oferecer uma estrutura base de e-commerce sólida. A ideia principal do design e do fluxo de compras é permitir que pequenos negócios consigam escalar suas vendas online de forma personalizada, preservando sempre a sua própria identidade visual durante toda a jornada de compra do cliente." },
+    { "q": "Por que o projeto foi arquivado?", "a": "O projeto encontra-se arquivado pois representa a minha primeira versão de um sistema web. Agora, pretendo realizar um trabalho de reavaliação para melhorar as relações e a modelagem do Banco de Dados, bem como atualizar as tecnologias por trás da lógica de negócios." },
+    { "q": "O código ou repositório ainda está acessível para consulta?", "a": "No momento ele está fechado para passar por essas reformulações. Contudo, em breve vou disponibilizar esse layout e toda a estrutura do e-commerce como código aberto, visando oferecer uma base para ajudar pequenos negócios a terem sua própria plataforma de vendas escalável." }
+  ],
+  "faq_reunioes_aut": [
+    { "q": "O que é o Reuniões_aut e qual problema prático ele resolve?", "a": "O Reuniões_aut é um sistema corporativo seguro focado no agendamento e gerenciamento inteligente de salas de reunião, criado como uma ferramenta de apoio fundamental durante a estruturação da Fundação CEPERJ. Ele resolve a sobreposição de horários e a falta de previsibilidade, trazendo praticidade para o controle de recepção e permitindo que as equipes de apoio (copeiras e limpeza) tenham atenção exata ao número de participantes. Seus grandes diferenciais são os avisos automatizados por e-mail (ao criar, editar ou cancelar reservas) e o suporte para trocas de reuniões, que detecta conflitos em tempo real e fornece os dados do organizador atual para uma negociação amigável, destravando a comunicação interna." },
+    { "q": "Como o sistema funciona na prática (agendamento, mediação e avisos)?", "a": "Ele funciona estritamente como um motor de agendamento e gestão. Na prática, o sistema permite cadastrar, ativar ou inativar salas, criar reservas de horário único ou recorrentes (com limites definidos), gerenciar usuários e setores sob um painel administrativo exclusivo, e exportar os agendamentos em um clique para o formato .ics (compatível com Google Calendar, Outlook e Apple Calendar)." },
+    { "q": "Quais tecnologias e integrações foram implementadas?", "a": "É uma aplicação determinística, robusta e leve, sem o uso de IA generativa. No back-end, utiliza Python 3.9+ com o framework Flask, e SQLite como banco de dados (com suporte previsto para PostgreSQL). O front-end foi construído com HTML, CSS e JavaScript nativos, adotando um design corporativo \"Dark Premium\" com glassmorphism e tipografia moderna (Inter/Outfit). As principais integrações incluem a exportação .ics, disparo de e-mails via Resend e APIs do Google Calendar." },
+    { "q": "Como o sistema lida com privacidade e dados corporativos sensíveis?", "a": "A segurança é um pilar do projeto. O sistema adota uma arquitetura \"Deny-by-Default\", totalmente fechada, sem página de cadastro público (as contas só existem se criadas pela administração). O acesso administrativo possui isolamento rigoroso (RBAC), exigindo permissão de desenvolvedor. As senhas usam criptografia bcrypt (cost factor 12) com limite de 72 caracteres, e há proteção contra enumeração de usuários (retornando mensagens genéricas de erro no login). Além disso, o controle de propriedade garante que apenas o criador do agendamento ou um administrador possam alterar ou visualizar os dados sensíveis da reserva." },
+    { "q": "O Reuniões_aut está em produção ou opera como MVP/piloto?", "a": "É um MVP funcional que já está em produção ativa. Ele foi implementado de forma ágil para resolver imediatamente as dores de agendamento e organização da Fundação CEPERJ, validando na prática o seu valor. O sistema foi desenvolvido com boas práticas para, no futuro, evoluir de forma sólida para uma solução de código aberto (open source)." }
+  ],
+  "faq_portfolio_interativo": [
+    { "q": "Como este portfólio foi construído?", "a": "Fugi de propósito da onda de currículos com design ultratrabalhado e animações pesadas, feitas à mão ou com apoio de agentes de IA. Preferi algo mais simples: um front-end em HTML, CSS e JavaScript puro, com back-end em Flask, montado como página única sem nenhum framework, com tema claro/escuro e tradução em português, inglês e espanhol via i18next." },
+    { "q": "O chat usa inteligência artificial no backend?", "a": "Por padrão, não. Cada card responde com perguntas e respostas prontas, escritas e revisadas por mim — sem custo, sem depender de nenhum serviço externo e sem risco de sair do ar. Existe um gancho opcional de IA (via camada gratuita da Hugging Face) no backend em Flask, mas ele só entra em ação se eu configurar um token no servidor; este projeto nunca usa serviço pago nem cartão de crédito." },
+    { "q": "O código do portfólio está disponível publicamente?", "a": "O código já existe e é exatamente o que você está vendo funcionar agora. Ainda não decidi abri-lo como projeto isolado, mas pretendo evoluir essa mesma arquitetura — perguntas prontas mais IA opcional — para uma versão open-source de chat interno de dúvidas, que empresas possam usar para colaboradores tirarem dúvidas sem custo de IA generativa paga." },
+    { "q": "Por que escolher esse formato de chat interativo (estilo WhatsApp Web)?", "a": "Muita gente aposta em designs ultratrabalhados e animações pesadas, feitas à mão ou com apoio de agentes de IA, pra mostrar o que consegue fazer. Prefiro um caminho diferente: trazer simplicidade pra soluções que não são open source e deixar o próprio visitante desbravar o sistema. Usei como referência o layout de uma plataforma amplamente conhecida (o WhatsApp Web) porque ela já entrega um resultado visual agradável e direto — ao ver um card de conversa, ninguém precisa pensar duas vezes pra saber que, ao clicar, uma conversa vai abrir no painel da direita. Isso faz parte da proposta de UI/UX do site: usar um padrão que as pessoas já conhecem pra reduzir o atrito de quem está navegando pela primeira vez." },
+    { "q": "Quais foram os maiores desafios técnicos no desenvolvimento deste site?", "a": "O maior desafio foi montar uma navegação parecida com a de uma SPA (como se faria com React) sem usar nenhum framework — só combinando JavaScript e CSS pra trocar de tela (lista de conversas, chat aberto, quadro de status) dentro da mesma página, com transições suaves, sem nunca perder o histórico das conversas, que fica salvo no localStorage do navegador." }
+  ]
 }

@@ -27,7 +27,7 @@
                 <div class="ultimos-3-icones">
                     <img src="img/new_chat.svg" alt="Relatar erro ou sugestao" class="icon" id="feedback-shortcut" data-i18n-title="icon_feedback" data-i18n-alt="icon_feedback">
 
-                    <img src="img/profile.svg" alt="Sobre mim" class="icon" data-i18n-title="icon_about" data-i18n-alt="icon_about">
+                    <img src="img/profile.svg" alt="Sobre mim" class="icon" id="about-shortcut" data-i18n-title="icon_about" data-i18n-alt="icon_about">
                 </div>
             </div>
 
@@ -123,6 +123,35 @@
                     <div class="modal-footer modal-contact-footer">
                         <span data-i18n="feedback_footer_note">Use este canal para reportar melhorias e possíveis falhas.</span>
                         <button type="button" class="portfolio-form-close-cta" data-i18n="close">Fechar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="about-modal" class="modal" aria-hidden="true">
+                <div class="modal-content about-modal-content" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+                    <div class="modal-header modal-contact-header">
+                        <div>
+                            <p class="modal-kicker" data-i18n="about_kicker">Sobre mim</p>
+                            <h2 id="about-modal-title" data-i18n="about_title">Um pouco mais sobre o Matheus</h2>
+                        </div>
+                        <button type="button" class="about-close-icon" aria-label="Fechar modal" data-i18n-title="close_modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body about-modal-body">
+                        <img src="img/ft-perfil.jpeg" class="about-foto" alt="Foto de perfil de Matheus" data-i18n-alt="about_photo_alt">
+
+                        <p class="modal-description" data-i18n="about_bio">
+                            Sou uma pessoa comunicativa e proativa — gosto de estar em contato com gente e de tomar iniciativa nos projetos que toco. Fora do código, curto treinar (a academia é praticamente uma segunda casa) e jogar tênis de mesa nas horas vagas.
+                        </p>
+
+                        <p class="modal-description" data-i18n="about_thanks">
+                            Obrigado por desbravar esse portfólio até aqui — cada detalhe foi pensado com carinho e atenção.
+                        </p>
+                    </div>
+
+                    <div class="modal-footer modal-contact-footer">
+                        <span data-i18n="about_footer_note">Projeto em evolução constante — novidades a cada 4 a 6 meses.</span>
+                        <button type="button" class="about-close-cta" data-i18n="close">Fechar</button>
                     </div>
                 </div>
             </div>

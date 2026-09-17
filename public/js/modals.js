@@ -22,17 +22,21 @@ export function initModals() {
     const modal = document.getElementById("modal");
     const serviceModal = document.getElementById("service-modal");
     const portfolioFormModal = document.getElementById("portfolio-form-modal");
+    const aboutModal = document.getElementById("about-modal");
     const modalTrigger = document.getElementById("modal-trigger");
     const openServiceModalButton = document.getElementById("open-service-modal");
     const feedbackShortcut = document.getElementById("feedback-shortcut");
+    const aboutShortcut = document.getElementById("about-shortcut");
 
     const modalCloseButtons = document.querySelectorAll(".modal-close-icon, .contact-close-cta");
     const serviceModalCloseButtons = document.querySelectorAll(".service-close-icon, .service-close-cta");
     const portfolioFormCloseButtons = document.querySelectorAll(".portfolio-form-close-icon, .portfolio-form-close-cta");
+    const aboutModalCloseButtons = document.querySelectorAll(".about-close-icon, .about-close-cta");
 
     const contactModal = wireModal(modal, modalCloseButtons);
     const serviceModalControls = wireModal(serviceModal, serviceModalCloseButtons);
     const portfolioFormModalControls = wireModal(portfolioFormModal, portfolioFormCloseButtons);
+    const aboutModalControls = wireModal(aboutModal, aboutModalCloseButtons);
 
     if (modalTrigger) {
         modalTrigger.addEventListener("click", contactModal.open);
@@ -49,6 +53,10 @@ export function initModals() {
         feedbackShortcut.addEventListener("click", portfolioFormModalControls.open);
     }
 
+    if (aboutShortcut) {
+        aboutShortcut.addEventListener("click", aboutModalControls.open);
+    }
+
     window.addEventListener("click", (event) => {
         if (event.target === modal) {
             contactModal.close();
@@ -60,6 +68,10 @@ export function initModals() {
 
         if (event.target === portfolioFormModal) {
             portfolioFormModalControls.close();
+        }
+
+        if (event.target === aboutModal) {
+            aboutModalControls.close();
         }
     });
 }

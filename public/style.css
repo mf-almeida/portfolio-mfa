@@ -646,13 +646,19 @@ button#theme-toggle:hover {
     border-bottom: 1px solid var(--border-soft);
     flex-shrink: 0;
 }
-.chat-info { display: flex; align-items: center; gap: 15px; }
-.chat-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; transition: opacity 0.2s ease; }
+.chat-info { display: flex; align-items: center; gap: 15px; flex: 1 1 auto; min-width: 0; }
+.chat-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; transition: opacity 0.2s ease; flex-shrink: 0; }
 .chat-avatar[src$=".svg"] { object-fit: contain; padding: 4px; }
 .chat-avatar.carregando { opacity: 0.35; }
-.chat-textos { display: flex; flex-direction: column; }
-.chat-titulo { font-weight: bold; font-family: "Victor Mono", monospace; }
-.chat-status { font-size: 12px; opacity: 0.7; }
+.chat-textos { display: flex; flex-direction: column; min-width: 0; }
+.chat-titulo {
+    font-weight: bold;
+    font-family: "Victor Mono", monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chat-status { font-size: 12px; opacity: 0.7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .btn-limpar-historico {
     border: 1px solid var(--border-soft);
@@ -831,7 +837,7 @@ body.light .linha-mensagem.usuario .balao-mensagem {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 60;
+    z-index: 100;
     background: rgba(7, 9, 13, 0.58);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -894,6 +900,82 @@ body.light .modal {
     line-height: 1.55;
     opacity: 0.84;
     color: var(--text-main);
+}
+
+.about-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 22px 22px;
+}
+
+.about-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+}
+
+.about-foto {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 3px solid var(--border-hover);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.about-nome {
+    font-family: "Victor Mono", monospace;
+    font-size: 17px;
+    color: var(--text-main);
+}
+
+.about-tagline {
+    font-size: 13px;
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.about-tag {
+    border: 1px solid var(--border-hover);
+    border-radius: 16px;
+    padding: 6px 13px;
+    font-family: "Victor Mono", monospace;
+    font-size: 13px;
+    background: var(--bg-search);
+    white-space: nowrap;
+}
+
+.about-bio {
+    margin: 0;
+    padding-top: 4px;
+    border-top: 1px solid var(--border-soft);
+}
+
+.about-agradecimento {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border-left: 3px solid var(--border-hover);
+    background: var(--bg-search);
+}
+
+.about-agradecimento p {
+    margin: 0;
+    font-style: italic;
+    line-height: 1.55;
+    opacity: 0.9;
 }
 
 .contact-grid {
@@ -992,7 +1074,9 @@ body.light .modal {
 .service-close-icon,
 .service-close-cta,
 .portfolio-form-close-icon,
-.portfolio-form-close-cta {
+.portfolio-form-close-cta,
+.about-close-icon,
+.about-close-cta {
     border: 1px solid var(--border-soft);
     background: transparent;
     color: var(--text-main);
@@ -1001,7 +1085,8 @@ body.light .modal {
 
 .modal-close-icon,
 .service-close-icon,
-.portfolio-form-close-icon {
+.portfolio-form-close-icon,
+.about-close-icon {
     width: 42px;
     height: 42px;
     border-radius: 50%;
@@ -1031,12 +1116,20 @@ body.light .modal {
     font-family: "Victor Mono", monospace;
 }
 
+.about-close-cta {
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-family: "Victor Mono", monospace;
+}
+
 .modal-close-icon:hover,
 .contact-close-cta:hover,
 .service-close-icon:hover,
 .service-close-cta:hover,
 .portfolio-form-close-icon:hover,
 .portfolio-form-close-cta:hover,
+.about-close-icon:hover,
+.about-close-cta:hover,
 .contact-service-trigger:hover {
     background: var(--hover-surface);
 }
@@ -1254,5 +1347,143 @@ body.light .modal {
 
     .kanban-board {
         grid-template-columns: repeat(4, minmax(230px, 80vw));
+    }
+}
+
+/* =========================================================
+   12) RESPONSIVO / MOBILE
+   Abaixo de 768px: navegação de tela única (lista OU chat OU
+   status, nunca duas ao mesmo tempo) e a barra de ícones lateral
+   vira um menu hambúrguer (drawer). Nada aqui é lido em telas
+   maiores que o breakpoint, então o layout desktop não muda.
+   ========================================================= */
+
+#mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 90;
+    width: 42px;
+    height: 42px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid var(--border-soft);
+    border-radius: 50%;
+    background: var(--bg-main);
+    background: color-mix(in srgb, var(--bg-main) 88%, transparent);
+    cursor: pointer;
+}
+
+#mobile-menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--text-main);
+}
+
+.chat-voltar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--text-main);
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+.chat-voltar:hover {
+    background: var(--hover-surface);
+}
+
+@media (max-width: 768px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .barra-lateral-de-icones,
+    .lista-de-conversas,
+    .conversa-aberta,
+    .status-view {
+        grid-column: 1;
+    }
+
+    #mobile-menu-toggle {
+        display: flex;
+    }
+
+    .chat-voltar {
+        display: flex;
+    }
+
+    .lista-de-conversas .main-functions,
+    .status-board-header {
+        padding-left: 64px;
+    }
+
+    .barra-lateral-de-icones {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(26vw, 96px);
+        max-width: none;
+        padding-top: 68px;
+        box-sizing: border-box;
+        transform: translateX(-100%);
+        transition: transform 0.28s ease;
+        z-index: 85;
+        box-shadow: 0 0 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .barra-lateral-de-icones .icon {
+        width: 20px;
+    }
+
+    .barra-lateral-de-icones .primeiros-5-icones,
+    .barra-lateral-de-icones .ultimos-3-icones {
+        gap: 20px;
+    }
+
+    .app.menu-aberto .barra-lateral-de-icones {
+        transform: translateX(0);
+    }
+
+    .mobile-menu-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        background: rgba(7, 9, 13, 0.58);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+    }
+
+    .mobile-menu-backdrop[hidden] {
+        display: none;
+    }
+
+    body.light .mobile-menu-backdrop {
+        background: rgba(0, 0, 0, 0.22);
+    }
+
+    .app.chat-aberto .lista-de-conversas {
+        display: none !important;
+    }
+
+    /* Dentro de um chat já existe o botão de voltar; o hambúrguer some
+       pra não sobrepor o cabeçalho do chat. */
+    .app.chat-aberto #mobile-menu-toggle {
+        display: none;
+    }
+
+    .app:not(.chat-aberto) .conversa-aberta {
+        display: none !important;
     }
 }
